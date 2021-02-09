@@ -1,6 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-
 
 export const CardContainer = styled.div`
   position: relative;
@@ -9,7 +9,6 @@ export const CardContainer = styled.div`
   height: ${props => props.theme.card.size};
   background-color: ${props => props.isActive ? props.theme.card.background.colorActive : props.theme.card.background.colorInactive};
   border-radius:  ${props => props.theme.card.borderRadius};
-  margin: 0px 12px 12px 0px;
   box-sizing: border-box;
   cursor: pointer;
   overflow: hidden;
@@ -60,6 +59,9 @@ export const CardTitle = styled.div`
 
 var buttonPressTimer;
 
+/**
+ * Base Card to be customized
+ */
 export function Card(props) {
 
   function handlePress() {
@@ -94,4 +96,19 @@ export function Card(props) {
       {props.children}
     </CardContainer>
   );
+}
+
+Card.propTypes = {
+  /** Action triggered on press */
+  handlePress: PropTypes.func,
+  /** Action triggered on long press */
+  handleLongPress: PropTypes.func,
+  /** State of the button */
+  isActive: PropTypes.bool.isRequired,
+  /** Icon of the card */
+  logo: PropTypes.element.isRequired,
+  /** Name label of the card */
+  name: PropTypes.string.isRequired,
+  /** State label of the card */
+  state: PropTypes.string.isRequired
 }

@@ -6,5 +6,3 @@ export {
   CardTitle,
   CardLogo,
 } from './Card';
-
-export { LightIcon } from './LightIcon';

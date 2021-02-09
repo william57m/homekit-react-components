@@ -1,15 +1,10 @@
 ```js
-
-import { DefaultIcon } from './common/DefaultIcon';
 const [isActive, setIsActive] = React.useState(true);
 
-<Card
+<LightCard
   isActive={isActive}
-  name="Name label"
-  state="State label"
+  name="Light Kitchen"
+  state="Off"
   handlePress={() => setIsActive(!isActive)}
-  logo={
-    <DefaultIcon />
-  }
 />
 ```
