@@ -6,5 +6,6 @@ module.exports = {
     Wrapper: path.join(__dirname, './Provider.js')
   },
   components: '../src/components/*.js',
-  ignore: ['../src/components/index.js']
+  ignore: ['../src/**/index.js'],
+  styleguideDir: '../dist_doc'
 };

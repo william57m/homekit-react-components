@@ -45,7 +45,7 @@ function App() {
 
 ## Documentation
 
-🚧 TO BE DEPLOYED 🚧
+https://william57m.github.io/homekit-react-components/
 
 
 ## Contribution

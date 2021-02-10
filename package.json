@@ -5,7 +5,9 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "webpack",
-    "start": "styleguidist server --config styleguide/styleguide.config.js",
+    "styleguide": "styleguidist server --config styleguide/styleguide.config.js",
+    "styleguide:build": "styleguidist build --config styleguide/styleguide.config.js",
+    "styleguide:deploy": "gh-pages -d dist_doc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -28,6 +30,7 @@
     "babel-loader": "^8.2.2",
     "css-loader": "^5.0.2",
     "file-loader": "^6.2.0",
+    "gh-pages": "^3.1.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
