@@ -1,23 +1,18 @@
-module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
-        loader: "babel-loader"
-      },
-      {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
-      },
-      {    
-        test: /\.(woff|woff2|eot|ttf|otf)$/,
-        use: ['file-loader']
-      },
-      {
-        test: /\.(gif|png|jpe?g|svg)$/i,
-        use: ['url-loader']
-      }
-    ]
-  }
-};
+const path = require('path');
+const pkg = require('./package.json');
+const nodeExternals = require('webpack-node-externals');
+const { merge } = require('webpack-merge');
+
+const webpackConfigBase = require('./webpack.config.base');
+
+module.exports = merge(webpackConfigBase, {
+  entry: "./src/components/index.js",
+  output: {
+    filename: "index.js",
+    path: path.resolve(__dirname, "dist"),
+    library: pkg.name,
+    libraryTarget: "umd"
+  },
+  mode: 'production',
+  externals: [nodeExternals()]
+});

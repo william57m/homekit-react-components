@@ -2,8 +2,9 @@
   "name": "homekit-react-components",
   "version": "1.0.0",
   "description": "HomeKit components for React",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "scripts": {
+    "build": "webpack",
     "start": "styleguidist server --config styleguide/styleguide.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -21,7 +22,7 @@
     "@babel/core": "^7.12.13",
     "@babel/preset-env": "^7.12.13",
     "@babel/preset-react": "^7.12.13",
-    "@emotion/core": "^11.0.0",
+    "@emotion/babel-plugin": "^11.1.2",
     "@emotion/react": "^11.1.5",
     "@emotion/styled": "^11.1.5",
     "babel-loader": "^8.2.2",
@@ -33,6 +34,15 @@
     "react-styleguidist": "^11.1.5",
     "style-loader": "^2.0.0",
     "url-loader": "^4.1.1",
-    "webpack": "^5.21.2"
+    "webpack": "^5.21.2",
+    "webpack-cli": "^4.5.0",
+    "webpack-merge": "^5.7.3",
+    "webpack-node-externals": "^2.5.2"
+  },
+  "peerDependencies": {
+    "@emotion/react": "^11.1.5",
+    "@emotion/styled": "^11.1.5",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
   }
 }

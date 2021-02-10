@@ -1,6 +1,7 @@
 const path = require('path');
 
-module.exports = {                     
+module.exports = {    
+  webpackConfig: require('../webpack.config.dev.js'),                 
   styleguideComponents: {
     Wrapper: path.join(__dirname, './Provider.js')
   },
