@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 
+
 export const CardContainer = styled.div`
   position: relative;
   display: inline-block;
@@ -12,8 +13,12 @@ export const CardContainer = styled.div`
   box-sizing: border-box;
   cursor: pointer;
   overflow: hidden;
-  padding: 10px;
   font-family: 'SF UI Display';
+  user-select: none;
+
+  &:active {
+    transform: scale(0.9);
+  }
 `;
 
 export const CardName = styled.div`
@@ -44,17 +49,7 @@ export const CardLogo = styled.div`
   top: 10px;
   left: 10px;
   width: 30px;
-`;
-
-export const CardTitle = styled.div`
-  width: 100%;
-  height: 30px;
-  line-height: 30px;
-  background-color: ${props => props.theme.card.background.colorActive};
-  color: ${props => props.theme.colors.textDark};
-  padding-left: 10px;
-  box-sizing: border-box;
-  font-size: ${props => props.theme.card.name.size};
+  filter: ${props => props.isActive ? 'grayscale(0%)' : 'grayscale(100%)'} ;
 `;
 
 var buttonPressTimer;
@@ -90,7 +85,7 @@ export function Card(props) {
       onMouseUp={handleButtonRelease} 
       onMouseLeave={handleButtonRelease}
     >
-      <CardLogo>{props.logo}</CardLogo>
+      <CardLogo isActive={props.isActive}>{props.logo}</CardLogo>
       <CardName isActive={props.isActive}>{props.name}</CardName>
       <CardState isActive={props.isActive}>{props.state}</CardState>
       {props.children}

@@ -5,7 +5,7 @@ import '../src/font.css';
 
 export default function Provider({ children }) {
   return (
-    <div style={{background: '#404040', padding: '10px'}}>
+    <div style={{background: '#1D4C60', padding: '10px'}}>
       <ThemeProvider theme={theme}>
         {children}
       </ThemeProvider>

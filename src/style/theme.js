@@ -1,18 +1,14 @@
 const colors = {
-  textLight: '#FFFFFFE0',
-  textMedium: '#FFFFFF60',
-  textGray: '#909090',
-  textDark: '#000000D0',
+  textLight: '#FFFFFF',
+  textMedium: '#808080',
+  textGray: '#404040',
+  textDark: '#000000',
 
   backgroundActive: '#FFFFFFFF',
-  backgroundInactive: '#70707040',
-
-  red: '#BD0909',
-  green: '#38B700',
-  blue: '#0094FF',
+  backgroundInactive: '#FFFFFF60',
 
   lightActive: '#ECC344',
-  fanActive: 'blue'
+  lightInactive: '#404040',
 };
 
 export const theme = {
@@ -27,30 +23,18 @@ export const theme = {
     name: {
       size: '12px',
       weight: 'bold',
-      colorActive: colors.textDark,
-      colorInactive: colors.textMedium,
+      colorActive: colors.textDark + 'FF',
+      colorInactive: colors.textDark + 'A0',
     },
     state: {
       size: '12px',
       weight: 'bold',
-      colorActive: colors.textGray,
-      colorInactive: colors.textGray,
+      colorActive: colors.textMedium + 'FF',
+      colorInactive: colors.textGray + 'A0',
     },
     light: {
       colorActive: colors.lightActive,
-      colorInactive: colors.textMedium
+      colorInactive: colors.lightInactive,
     },
-    fan: {
-      colorActive: colors.fanActive,
-      colorActive: colors.textMedium,
-    }
-  },
-  badgeCount: {
-    color: colors.red
-  },
-  title: {
-    size: '20px',
-    weight: '200',
-    color: colors.textLight,
   },
 };
