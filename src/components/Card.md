@@ -8,7 +8,7 @@ const [isActive, setIsActive] = React.useState(true);
   name="Name label"
   state="State label"
   handlePress={() => setIsActive(!isActive)}
-  logo={
+  icon={
     <DefaultIcon />
   }
 />

@@ -44,7 +44,7 @@ export const CardState = styled.div`
   color: ${props => props.isActive ? props.theme.card.state.colorActive : props.theme.card.state.colorInactive};
 `;
 
-export const CardLogo = styled.div`
+export const CardIcon = styled.div`
   position: absolute;
   top: 10px;
   left: 10px;
@@ -85,7 +85,7 @@ export function Card(props) {
       onMouseUp={handleButtonRelease} 
       onMouseLeave={handleButtonRelease}
     >
-      <CardLogo isActive={props.isActive}>{props.logo}</CardLogo>
+      <CardIcon isActive={props.isActive}>{props.icon}</CardIcon>
       <CardName isActive={props.isActive}>{props.name}</CardName>
       <CardState isActive={props.isActive}>{props.state}</CardState>
       {props.children}
@@ -101,7 +101,7 @@ Card.propTypes = {
   /** State of the button */
   isActive: PropTypes.bool.isRequired,
   /** Icon of the card */
-  logo: PropTypes.element.isRequired,
+  icon: PropTypes.element.isRequired,
   /** Name label of the card */
   name: PropTypes.string.isRequired,
   /** State label of the card */

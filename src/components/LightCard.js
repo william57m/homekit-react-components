@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 
 import LightIconSvg from '../resources/icons/light-bulb.svg';
@@ -13,9 +14,9 @@ const LightIconContainer = styled.div`
 export function LightCard(props) {
   return (
     <Card
-      logo={
-        props.logo ?
-          props.logo :
+      icon={
+        props.icon ?
+          props.icon :
           <LightIconContainer isActive={props.isActive ? 1 : 0}>
             <img src={LightIconSvg} alt="Light Icon" />
           </LightIconContainer>
@@ -28,3 +29,8 @@ export function LightCard(props) {
     />
   );
 }
+
+LightCard.propTypes = {
+  /** Capability of the light (dimmable, color) */
+  capability: PropTypes.array,
+};

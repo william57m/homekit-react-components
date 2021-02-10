@@ -4,7 +4,7 @@ const [isActive, setIsActive] = React.useState(true);
 <LightCard
   isActive={isActive}
   name="Light Kitchen"
-  state="Off"
+  state={isActive ? 'On' : 'Off'}
   handlePress={() => setIsActive(!isActive)}
 />
 ```

@@ -3,7 +3,7 @@ export {
   CardContainer,
   CardName,
   CardState,
-  CardLogo,
+  CardIcon,
 } from './Card';
 
 export { LightCard } from './LightCard';
