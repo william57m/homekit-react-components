@@ -9,6 +9,8 @@ const colors = {
 
   lightActive: '#ECC344',
   lightInactive: '#404040',
+
+  defaultLight: '#F8CC46',
 };
 
 export const theme = {
@@ -37,4 +39,19 @@ export const theme = {
       colorInactive: colors.lightInactive,
     },
   },
+  modal: {
+    background: colors.backgroundActive,
+    header: {
+      title: {
+        size: '12px',
+        weight: 'bold',
+        color: colors.textDark,
+      },
+      subtitle: {
+        size: '12px',
+        weight: 'bold',
+        color: colors.textMedium,
+      }
+    }
+  }
 };

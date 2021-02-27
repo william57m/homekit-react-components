@@ -204,3 +204,8 @@
   font-style: normal;
   font-display: swap;
 }
+
+
+html {
+  font-family: 'SF UI Display';
+}

@@ -47,5 +47,8 @@
     "@emotion/styled": "^11.1.5",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
+  },
+  "dependencies": {
+    "react-modal": "^3.12.1"
   }
 }

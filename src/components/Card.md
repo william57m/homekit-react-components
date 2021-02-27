@@ -1,6 +1,6 @@
 ```js
 
-import { DefaultIcon } from './common/DefaultIcon';
+import { DefaultIcon } from './Common/DefaultIcon';
 const [isActive, setIsActive] = React.useState(true);
 
 <Card
