@@ -7,21 +7,21 @@ import { Card } from './Card';
 import { ModalLight } from './Modals';
 
 const LightIconContainer = styled.div`
-  color: ${props => props.isActive ? props.theme.card.light.colorActive : props.theme.card.light.colorInactive};
+  color: ${props => props.on ? props.theme.card.light.colorActive : props.theme.card.light.colorInactive};
   font-size: 24px;
 `;
 
 export function LightCard(props) {
   // Modal
-  const [show, setShow] = useState(true);
+  const [showModal, setShowModal] = useState(false);
   function handleLongPress() {
-    setShow(true);
+    setShowModal(true);
   }
   function handleCloseModal() {
-    setShow(false);
+    setShowModal(false);
   }
 
-  const state = props.isActive ? 'On' : 'Off';
+  const stateLabel = props.on ? 'On' : 'Off';
 
   return (
     <React.Fragment>
@@ -29,50 +29,50 @@ export function LightCard(props) {
         icon={
           props.icon ?
             props.icon :
-            <LightIconContainer isActive={props.isActive ? 1 : 0}>
-              <img src={LightIconSvg} alt="Light Icon" />
+            <LightIconContainer on={props.on}>
+              <img src={LightIconSvg} />
             </LightIconContainer>
         }
         name={props.name}
-        state={state}
-        isActive={props.isActive}
-        handlePress={props.handlePress}
+        state={stateLabel}
+        isActive={props.on}
+        handlePress={props.onToggle}
         handleLongPress={handleLongPress}
       />
       <ModalLight
         name={props.name}
-        state={state}
-        isActive={props.isActive}
+        state={stateLabel}
         capabilities={props.capabilities}
+        on={props.on}
+        onToggle={props.onToggle}
         brightness={props.brightness}
-        setBrightness={props.setBrightness}
-        handlePress={props.handlePress}
-        show={show}
-        closeModal={handleCloseModal} />
+        onBrightnessChange={props.onBrightnessChange}
+        show={showModal}
+        close={handleCloseModal} />
     </React.Fragment>
   );
 }
 
 LightCard.propTypes = {
-  /** Action triggered on press */
-  toggleState: PropTypes.func,
-  /** Action triggered when brightness change */
-  onBrightnessChange: PropTypes.func,
-  /** State of the button */
-  isActive: PropTypes.bool.isRequired,
   /** Custom icon for light */
   icon: PropTypes.element,
+  /** Action triggered on press */
+  onToggle: PropTypes.func,
+  /** Action triggered when brightness change */
+  onBrightnessChange: PropTypes.func,
+  /** State of the light */
+  on: PropTypes.bool.isRequired,
   /** Name label of the card */
   name: PropTypes.string.isRequired,
   /** State label of the card */
   brightness: PropTypes.number,
   /** Capability of the light (dimmable, color) */
-  capabilities: PropTypes.array,
+  capabilities: PropTypes.object,
 };
 
 LightCard.defaultProps = {
   capabilities: {
     SUPPORT_BRIGHTNESS: false,
     SUPPORT_COLOR: false,
-  }
-}
+  },
+};

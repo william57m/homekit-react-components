@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 
 
@@ -29,10 +30,9 @@ const CustomSlider = styled.input`
     border: 8px solid ${props => props.color};
     box-shadow: -100vw 0 0 100vw ${props => props.color};
   }
-`
+`;
 
 var timeout;
-
 
 export function Slider(props) {
   const [value, setValue] = useState(props.value);
@@ -42,7 +42,7 @@ export function Slider(props) {
     setValue(value);
     timeout && clearTimeout(timeout);
     timeout = setTimeout(() => {
-      props.onChange(value)
+      props.onChange(value);
     }, 200);
   }
 
@@ -59,3 +59,12 @@ export function Slider(props) {
     </SliderContainer>
   );
 }
+
+Slider.propTypes = {
+  /** Color of the slider */
+  color: PropTypes.string.isRequired,
+  /** Action triggered on slider change */
+  onChange: PropTypes.func.isRequired,
+  /** Value of the slider */
+  value: PropTypes.number.isRequired,
+};

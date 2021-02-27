@@ -51,7 +51,7 @@ export const theme = {
         size: '12px',
         weight: 'bold',
         color: colors.textMedium,
-      }
-    }
-  }
+      },
+    },
+  },
 };

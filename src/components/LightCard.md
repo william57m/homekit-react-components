@@ -4,9 +4,9 @@ Regular light
 const [isActive, setIsActive] = React.useState(true);
 
 <LightCard
-  isActive={isActive}
+  on={isActive}
   name="Regular Light"
-  handlePress={() => setIsActive(!isActive)}
+  onToggle={() => setIsActive(!isActive)}
 />
 ```
 
@@ -19,12 +19,12 @@ const [brightness, setBrightness] = React.useState(100);
 
 <LightCard
   name="Dimmable Light"
-  isActive={isActive}
+  on={isActive}
+  onToggle={() => setIsActive(!isActive)}
   brightness={isActive ? brightness : 0}
-  setBrightness={(value) => { setBrightness(value); value == 0 ? setIsActive(false) : setIsActive(true)}}
+  onBrightnessChange={(value) => { setBrightness(value); setIsActive(value != 0); }}
   capabilities={{
     SUPPORT_BRIGHTNESS: true
   }}
-  handlePress={() => setIsActive(!isActive)}
 />
 ```

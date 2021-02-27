@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 
 const Slider = styled.div`
@@ -16,9 +17,9 @@ const Slider = styled.div`
     -webkit-transition: .4s;
     transition: .4s;
     border-radius: 18px;
-    background-color: ${props => props.isActive ? props.theme.colors.defaultLight : props.theme.colors.textMedium};
+    background-color: ${props => props.on ? props.theme.colors.defaultLight : props.theme.colors.textMedium};
   }
-`
+`;
 
 const SwitchContainer = styled.label`
   background: #F0F0F0;
@@ -44,8 +45,15 @@ const SwitchContainer = styled.label`
 export function Switch(props) {
   return (
     <SwitchContainer>
-      <input type="checkbox" defaultChecked={props.isActive} onChange={props.handlePress} />
-      <Slider isActive={props.isActive} />
+      <input type="checkbox" defaultChecked={props.on} onChange={props.onToggle} />
+      <Slider on={props.on} />
     </SwitchContainer>
   );
 }
+
+Switch.propTypes = {
+  /** Action triggered on toggle */
+  onToggle: PropTypes.func.isRequired,
+  /** State of the switch */
+  on: PropTypes.bool.isRequired,
+};

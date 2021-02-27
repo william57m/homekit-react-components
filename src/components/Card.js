@@ -94,16 +94,18 @@ export function Card(props) {
 }
 
 Card.propTypes = {
+  /** Children */
+  children: PropTypes.element,
   /** Action triggered on press */
   handlePress: PropTypes.func,
   /** Action triggered on long press */
   handleLongPress: PropTypes.func,
-  /** State of the button */
-  isActive: PropTypes.bool.isRequired,
   /** Icon of the card */
   icon: PropTypes.element.isRequired,
+  /** State of the button */
+  isActive: PropTypes.bool.isRequired,
   /** Name label of the card */
   name: PropTypes.string.isRequired,
   /** State label of the card */
-  state: PropTypes.string.isRequired
-}
+  state: PropTypes.string.isRequired,
+};
