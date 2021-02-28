@@ -1,11 +1,9 @@
-# HomeKit React Components (WIP)
+# HomeKit React Components
 
 List of React Component mimicating HomeKit components from the Home application (iOS, MacOS).
 
 
 ## Installation
-
-🚧 THE PACKAGE IS NOT DEPLOYED YET 🚧
 
 ```
 npm install homekit-react-components
@@ -36,9 +34,8 @@ function App() {
 ```js
 <LightCard
   name="My Light"
-  state="Off"
-  isActive={true}
-  handlePress={() => {}}
+  on={true}
+  onToggle={() => setIsOn(...)}
 />
 ```
 
@@ -46,6 +43,20 @@ function App() {
 ## Documentation
 
 https://william57m.github.io/homekit-react-components/
+
+
+## Roadmap
+
+Here is a non exhaustive list of the next components to be developed:
+- Thermostat Card
+- Sensor Card
+- Switch Card
+- Fan Card
+- Camera Card
+- Scene Card
+- Media Player Card
+- State component
+- Title, section component and different HomeKit layout
 
 
 ## Contribution
