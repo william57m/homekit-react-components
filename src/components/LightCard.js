@@ -21,7 +21,9 @@ export function LightCard(props) {
     setShowModal(false);
   }
 
-  const stateLabel = props.on ? 'On' : 'Off';
+  const stateLabel = props.on ?
+    props.brightness ? `${props.brightness}%` : 'On' :
+    'Off';
 
   return (
     <React.Fragment>

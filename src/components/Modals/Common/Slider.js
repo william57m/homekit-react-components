@@ -17,7 +17,7 @@ const CustomSlider = styled.input`
   margin-top: 70px;
   outline: none;
   border-radius: 20px;
-  background: #F0F0F0;
+  background: ${props => props.theme.colors.light2};
   overflow: hidden;
   transform-origin:100px 100px;
   transform: rotate(-90deg);

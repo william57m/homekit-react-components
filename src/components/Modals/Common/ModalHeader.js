@@ -37,7 +37,7 @@ const Subtitle = styled.div`
 `;
 
 const CloseIconContainer = styled.div`
-  background: #F0F0F0;
+  background: ${props => props.theme.colors.light2};
   width: 24px;
   height: 24px;
   border-radius: 100%;

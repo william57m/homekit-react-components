@@ -17,12 +17,12 @@ const Slider = styled.div`
     -webkit-transition: .4s;
     transition: .4s;
     border-radius: 18px;
-    background-color: ${props => props.on ? props.theme.colors.defaultLight : props.theme.colors.textMedium};
+    background-color: ${props => props.on ? props.theme.colors.lightActive : props.theme.colors.lightGray};
   }
 `;
 
 const SwitchContainer = styled.label`
-  background: #F0F0F0;
+  background: ${props => props.theme.colors.light2};
   height: 260px;
   width: 90px;
   border-radius: 20px;

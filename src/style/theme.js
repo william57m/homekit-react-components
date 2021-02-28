@@ -1,16 +1,15 @@
 const colors = {
-  textLight: '#FFFFFF',
-  textMedium: '#808080',
-  textGray: '#404040',
-  textDark: '#000000',
+  light1: '#FFFFFF',
+  light2: '#F0F0F0',
+  lightGray: '#808080',
+  gray: '#404040',
+  dark: '#000000',
 
   backgroundActive: '#FFFFFFFF',
   backgroundInactive: '#FFFFFF60',
 
-  lightActive: '#ECC344',
+  lightActive: '#F8CC46',
   lightInactive: '#404040',
-
-  defaultLight: '#F8CC46',
 };
 
 export const theme = {
@@ -25,14 +24,14 @@ export const theme = {
     name: {
       size: '12px',
       weight: 'bold',
-      colorActive: colors.textDark + 'FF',
-      colorInactive: colors.textDark + 'A0',
+      colorActive: colors.dark + 'FF',
+      colorInactive: colors.dark + 'A0',
     },
     state: {
       size: '12px',
       weight: 'bold',
-      colorActive: colors.textMedium + 'FF',
-      colorInactive: colors.textGray + 'A0',
+      colorActive: colors.lightGray + 'FF',
+      colorInactive: colors.gray + 'A0',
     },
     light: {
       colorActive: colors.lightActive,
@@ -45,12 +44,12 @@ export const theme = {
       title: {
         size: '12px',
         weight: 'bold',
-        color: colors.textDark,
+        color: colors.dark,
       },
       subtitle: {
         size: '12px',
         weight: 'bold',
-        color: colors.textMedium,
+        color: colors.lightGray,
       },
     },
   },

@@ -28,7 +28,7 @@ const ModalStyle = {
 };
 
 const ModalContainer = styled.div`
-  background-color: #FFFFFF;
+  background-color: ${props => props.theme.colors.light1};
   width: 300px;
   border-radius: 10px;
 `;
@@ -98,6 +98,8 @@ ModalLight.propTypes = {
   capabilities: PropTypes.object.isRequired,
   /** Method to close the modal */
   close: PropTypes.func.isRequired,
+  /** Color of the light */
+  color: PropTypes.string,
   /** Name of the light */
   name: PropTypes.string.isRequired,
   /** Action triggered on toggle switch */
@@ -106,6 +108,8 @@ ModalLight.propTypes = {
   on: PropTypes.bool,
   /** Action triggered on brightness change */
   onBrightnessChange: PropTypes.func,
+  /** Action triggered on color change */
+  onColorChange: PropTypes.func,
   /** State of the modal */
   show: PropTypes.bool.isRequired,
   /** State label of the light */
