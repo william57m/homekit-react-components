@@ -7,3 +7,4 @@ export {
 } from './Card';
 
 export { LightCard } from './LightCard';
+export { ThermostatCard } from './ThermostatCard';

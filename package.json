@@ -14,7 +14,7 @@
     "type": "git",
     "url": "git+https://github.com/william57m/homekit-react-components.git"
   },
-  "author": "William Mura",
+  "author": "william57m",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/william57m/homekit-react-components/issues"
@@ -51,6 +51,8 @@
     "react-dom": "^17.0.1"
   },
   "dependencies": {
+    "@fseehawer/react-circular-slider": "^2.3.5",
+    "react-mobile-picker": "^0.1.12",
     "react-modal": "^3.12.1"
   }
 }

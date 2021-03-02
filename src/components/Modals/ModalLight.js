@@ -1,47 +1,13 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Modal from 'react-modal';
-import styled from '@emotion/styled';
 
-import { ModalHeader, Slider, Switch } from './Common';
-
+import { ModalContainer, ModalContent, ModalHeader, ModalStyle, Slider, Switch } from './Common';
 import LightIconSvg from '../../resources/icons/light-bulb.svg';
 
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
 Modal.setAppElement('html');
 
-const ModalStyle = {
-  overlay: {
-    position: 'fixed',
-    padding: 0,
-    backgroundColor: '#404040CC',
-  },
-  content: {
-    background: 'transparent',
-    border: 'none',
-    padding: 0,
-    top: '50px',
-    right: 'initial',
-    bottom: 'initial',
-    left: 'calc(50% - 150px)',
-  },
-};
-
-const ModalContainer = styled.div`
-  background-color: ${props => props.theme.colors.light1};
-  width: 300px;
-  border-radius: 10px;
-`;
-
-const ModalContent = styled.div`
-  padding: 10px;
-  text-align: center;
-  display: flex;
-  padding: 60px;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-`;
 
 export function ModalLight(props) {
   const [color] = useState('#F8CC46');
@@ -66,7 +32,9 @@ export function ModalLight(props) {
           title={props.name}
           subtitle={stateLabel}
           close={props.close}
-          icon={LightIconSvg}
+          icon={
+            <img src={LightIconSvg} />
+          }
         />
         <ModalContent>
           {props.capabilities.SUPPORT_BRIGHTNESS ?

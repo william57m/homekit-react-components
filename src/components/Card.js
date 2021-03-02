@@ -40,7 +40,6 @@ export const CardState = styled.div`
   left: 10px;
   font-size: ${props => props.theme.card.state.size};
   font-weight: ${props => props.theme.card.state.weight};
-  text-transform: capitalize;
   color: ${props => props.isActive ? props.theme.card.state.colorActive : props.theme.card.state.colorInactive};
 `;
 

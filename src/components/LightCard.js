@@ -64,11 +64,11 @@ LightCard.propTypes = {
   onBrightnessChange: PropTypes.func,
   /** State of the light */
   on: PropTypes.bool.isRequired,
-  /** Name label of the card */
+  /** Name of the light */
   name: PropTypes.string.isRequired,
-  /** State label of the card */
+  /** Brightness of the light */
   brightness: PropTypes.number,
-  /** Capability of the light (dimmable, color) */
+  /** Capabilities of the light (dimmable, color, ...) */
   capabilities: PropTypes.object,
 };
 

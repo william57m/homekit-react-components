@@ -53,7 +53,7 @@ const CloseIconContainer = styled.div`
   return (
     <ModalHeaderContainer>
       <IconContainer>
-        <img src={props.icon} />
+        {props.icon}
       </IconContainer>
       <TitleContainer>
         <Title>{props.title}</Title>
@@ -70,7 +70,7 @@ ModalHeader.propTypes = {
   /** Method to close the modal */
   close: PropTypes.func.isRequired,
   /** Icon of the header */
-  icon: PropTypes.string.isRequired,
+  icon: PropTypes.element.isRequired,
   /** Subtitle of the header */
   subtitle: PropTypes.string.isRequired,
   /** Title of the header */
