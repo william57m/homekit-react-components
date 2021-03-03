@@ -13,17 +13,15 @@ const CustomSlider = styled.input`
   height: 90px; 
   /* Height */
   width: 260px;
-  margin-left: calc(50% - 45px);
-  margin-top: 70px;
+  margin-top: 80px;
   outline: none;
   border-radius: 20px;
   background: ${props => props.theme.colors.light2};
   overflow: hidden;
-  transform-origin:100px 100px;
   transform: rotate(-90deg);
 
   &::-webkit-slider-thumb {
-    -webkit-appearance:none;
+    -webkit-appearance: none;
     width: 20px;
     height: 40px;
     border-radius: 20px;
