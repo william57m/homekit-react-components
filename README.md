@@ -48,14 +48,13 @@ https://william57m.github.io/homekit-react-components/
 ## Roadmap
 
 Here is a non exhaustive list of the next components to be developed:
-- Thermostat Card
 - Sensor Card
 - Switch Card
 - Fan Card
 - Camera Card
-- Scene Card
 - Media Player Card
 - State component
+- Alarm card
 - Title, section component and different HomeKit layout
 
 

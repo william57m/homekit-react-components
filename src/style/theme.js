@@ -40,6 +40,14 @@ export const theme = {
       colorInactive: colors.lightInactive,
     },
   },
+  sceneCard: {
+    width: '206px',
+    height: '48px',
+    name: {
+      size: '14px',
+      weight: 600,
+    },
+  },
   modal: {
     background: colors.backgroundActive,
     header: {

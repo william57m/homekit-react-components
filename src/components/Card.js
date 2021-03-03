@@ -101,7 +101,7 @@ Card.propTypes = {
   handleLongPress: PropTypes.func,
   /** Icon of the card */
   icon: PropTypes.element.isRequired,
-  /** State of the button */
+  /** State of the card */
   isActive: PropTypes.bool.isRequired,
   /** Name label of the card */
   name: PropTypes.string.isRequired,
