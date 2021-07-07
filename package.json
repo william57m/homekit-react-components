@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "HomeKit components for React",
   "main": "dist/index.js",
+  "module": "src/index.js",
   "scripts": {
     "build": "webpack",
     "styleguide": "styleguidist server --config styleguide/styleguide.config.js",

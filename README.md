@@ -61,3 +61,28 @@ Here is a non exhaustive list of the next components to be developed:
 ## Contribution
 
 🚧 TO BE COMPLETED 🚧
+
+### homeassistant-dashboard
+
+> The below guide assumes you are developing for use with https://github.com/william57m/homeassistant-dashboard
+
+- Run `npm i --save homekit-react-components` to your [homeassistant-dashboard](https://github.com/william57m/homeassistant-dashboard) project
+- In this cloned repo, run `npm link`
+
+In your `homeassistant-dashboard` project, do the following:
+
+- Add the below into the module.exports of your `webpack.config.js` file:
+
+```
+    resolve: {
+        alias: {
+            react: path.resolve('./node_modules/react'),
+            '@emotion/react': path.resolve('./node_modules/@emotion/react'),
+        },
+    },
+```
+
+- Run `npm link homekit-react-components`
+- Run `npm run start` to start the dev server
+
+Any changes you make to `homekit-react-components` will be hot loaded via your `homeassistant-dashboard` project
