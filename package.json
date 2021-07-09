@@ -53,6 +53,7 @@
   },
   "dependencies": {
     "@fseehawer/react-circular-slider": "^2.3.5",
+    "classnames": "^2.3.1",
     "react-mobile-picker": "^0.1.12",
     "react-modal": "^3.12.1"
   }

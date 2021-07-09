@@ -1,7 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
+import { keyframes } from "@emotion/react";
 
+export const Bounce = keyframes`
+  40% {
+    -webkit-transform: scale(1.08);
+  }
+  50% {
+    -webkit-transform: scale(0.98);
+  }
+  55% {
+    -webkit-transform: scale(1.02);
+  }
+  60% {
+    -webkit-transform: scale(0.98);
+  }
+  100% {
+    -webkit-transform: scale(1);
+  }
+`;
 
 export const CardContainer = styled.div`
   position: relative;
@@ -15,10 +33,7 @@ export const CardContainer = styled.div`
   overflow: hidden;
   font-family: 'SF UI Display';
   user-select: none;
-
-  &:active {
-    transform: scale(0.9);
-  }
+  opacity: ${props => props.isActive ? '100%' : (props.isActive === false ? '70%' : '100%')};
 `;
 
 export const CardName = styled.div`
@@ -32,6 +47,7 @@ export const CardName = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   color: ${props => props.isActive ? props.theme.card.name.colorActive : props.theme.card.name.colorInactive};
+
 `;
 
 export const CardState = styled.div`
@@ -78,10 +94,10 @@ export function Card(props) {
     <CardContainer
       isActive={props.isActive}
       onClick={handlePress}
-      onTouchStart={handleButtonPress} 
-      onTouchEnd={handleButtonRelease} 
-      onMouseDown={handleButtonPress} 
-      onMouseUp={handleButtonRelease} 
+      onTouchStart={handleButtonPress}
+      onTouchEnd={handleButtonRelease}
+      onMouseDown={handleButtonPress}
+      onMouseUp={handleButtonRelease}
       onMouseLeave={handleButtonRelease}
     >
       <CardIcon isActive={props.isActive}>{props.icon}</CardIcon>
