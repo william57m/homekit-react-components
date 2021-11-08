@@ -1,6 +1,6 @@
-```js
-
+```tsx
 import { DefaultIcon } from './Common/DefaultIcon';
+import { Card } from './Card';
 const [isActive, setIsActive] = React.useState(true);
 
 <Card

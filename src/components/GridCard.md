@@ -1,5 +1,5 @@
-```js
-
+```tsx
+import { GridCard } from './GridCard';
 import { DefaultIcon } from './Common/DefaultIcon';
 const [isActive, setIsActive] = React.useState(true);
 

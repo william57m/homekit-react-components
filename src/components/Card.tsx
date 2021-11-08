@@ -1,7 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { FC, ReactNode } from 'react';
 import styled from '@emotion/styled';
-import { keyframes } from "@emotion/react";
+import { keyframes } from '@emotion/react';
 
 export const Bounce = keyframes`
   40% {
@@ -21,7 +20,11 @@ export const Bounce = keyframes`
   }
 `;
 
-export const CardContainer = styled.div`
+interface CardContainerProps {
+  isActive?: boolean;
+}
+
+export const CardContainer = styled.div<CardContainerProps>`
   position: relative;
   display: inline-block;
   width: ${props => props.theme.card.size};
@@ -36,7 +39,7 @@ export const CardContainer = styled.div`
   opacity: ${props => props.isActive ? '100%' : (props.isActive === false ? '70%' : '100%')};
 `;
 
-export const CardName = styled.div`
+export const CardName = styled.div<CardContainerProps>`
   position: absolute;
   bottom: 26px;
   left: 10px;
@@ -50,7 +53,7 @@ export const CardName = styled.div`
 
 `;
 
-export const CardState = styled.div`
+export const CardState = styled.div<CardContainerProps>`
   position: absolute;
   bottom: 10px;
   left: 10px;
@@ -59,7 +62,7 @@ export const CardState = styled.div`
   color: ${props => props.isActive ? props.theme.card.state.colorActive : props.theme.card.state.colorInactive};
 `;
 
-export const CardIcon = styled.div`
+export const CardIcon = styled.div<CardContainerProps>`
   position: absolute;
   top: 10px;
   left: 10px;
@@ -67,12 +70,30 @@ export const CardIcon = styled.div`
   filter: ${props => props.isActive ? 'grayscale(0%)' : 'grayscale(100%)'} ;
 `;
 
-var buttonPressTimer;
+let buttonPressTimer: NodeJS.Timeout;
+
+interface CardProps {
+  /** Children */
+  children?: ReactNode
+  /** Action triggered on press */
+  handlePress?: () => void,
+  /** Action triggered on long press */
+  handleLongPress?: () => void,
+  /** Icon of the card */
+  icon: ReactNode,
+  /** State of the card */
+  isActive: boolean,
+  /** Name label of the card */
+  name: string,
+  /** State label of the card */
+  state: string,
+}
+
 
 /**
  * Base Card to be customized
  */
-export function Card(props) {
+export const Card: FC<CardProps> = (props) => {
 
   function handlePress() {
     if (props.handlePress) {
@@ -82,7 +103,7 @@ export function Card(props) {
 
   function handleButtonPress () {
     if (props.handleLongPress) {
-      buttonPressTimer = setTimeout(() => props.handleLongPress(), 1000);
+      buttonPressTimer = setTimeout(() => props.handleLongPress && props.handleLongPress(), 1000);
     }
   }
 
@@ -106,21 +127,4 @@ export function Card(props) {
       {props.children}
     </CardContainer>
   );
-}
-
-Card.propTypes = {
-  /** Children */
-  children: PropTypes.element,
-  /** Action triggered on press */
-  handlePress: PropTypes.func,
-  /** Action triggered on long press */
-  handleLongPress: PropTypes.func,
-  /** Icon of the card */
-  icon: PropTypes.element.isRequired,
-  /** State of the card */
-  isActive: PropTypes.bool.isRequired,
-  /** Name label of the card */
-  name: PropTypes.string.isRequired,
-  /** State label of the card */
-  state: PropTypes.string.isRequired,
 };

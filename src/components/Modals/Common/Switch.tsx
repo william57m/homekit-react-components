@@ -1,8 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { FC } from 'react';
 import styled from '@emotion/styled';
 
-const Slider = styled.div`
+interface SliderProps {
+  on: boolean;
+}
+
+const Slider = styled.div<SliderProps>`
   -webkit-transition: .4s;
   transition: .4s;
 
@@ -42,18 +45,18 @@ const SwitchContainer = styled.label`
   }
 `;
 
-export function Switch(props) {
+interface SwitchProps {
+  /** Action triggered on toggle */
+  readonly onToggle: () => void;
+  /** State of the switch */
+  readonly on: boolean;
+}
+
+export const Switch: FC<SwitchProps> = (props) => {
   return (
     <SwitchContainer>
       <input type="checkbox" defaultChecked={props.on} onChange={props.onToggle} />
       <Slider on={props.on} />
     </SwitchContainer>
   );
-}
-
-Switch.propTypes = {
-  /** Action triggered on toggle */
-  onToggle: PropTypes.func.isRequired,
-  /** State of the switch */
-  on: PropTypes.bool.isRequired,
 };

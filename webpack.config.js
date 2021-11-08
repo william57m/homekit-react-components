@@ -6,13 +6,14 @@ const { merge } = require('webpack-merge');
 const webpackConfigBase = require('./webpack.config.base');
 
 module.exports = merge(webpackConfigBase, {
-  entry: "./src/components/index.js",
+  entry: "./src/index.ts",
   output: {
     filename: "index.js",
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "dist/bundle"),
     library: pkg.name,
-    libraryTarget: "umd"
+    libraryTarget: "umd",
+    umdNamedDefine: true,
   },
   mode: 'production',
-  externals: [nodeExternals()]
+  externals: [nodeExternals()],
 });

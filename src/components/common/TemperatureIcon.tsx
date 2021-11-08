@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { FC } from 'react';
 import styled from '@emotion/styled';
 
 
@@ -20,15 +19,15 @@ const TemperatureText = styled.div`
   color: ${props => props.theme.colors.light1};
 `;
 
-export function TemperatureIcon(props) {
+interface TemperatureIconProps {
+  /** Temperature value */
+  readonly temperature: number;
+}
+
+export const TemperatureIcon: FC<TemperatureIconProps> = (props) => {
   return (
     <TemperatureLogoContainer>
       <TemperatureText>{props.temperature.toFixed(1)}°</TemperatureText>
     </TemperatureLogoContainer>
   );
-}
-
-TemperatureIcon.propTypes = {
-  /** Temperature value */
-  temperature: PropTypes.number,
 };
