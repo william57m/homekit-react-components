@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Card } from './Card';
 import { ModalThermostat } from './Modals';
 import { TemperatureIcon } from './Common/TemperatureIcon';
+import {GridCard} from "./GridCard";
 
 
 export function ThermostatCard(props) {
@@ -22,7 +23,7 @@ export function ThermostatCard(props) {
 
   return (
     <React.Fragment>
-      <Card
+      <GridCard
         icon={
           <TemperatureIcon temperature={props.currentTemperature} />
         }

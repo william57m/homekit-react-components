@@ -4,16 +4,18 @@ import styled from '@emotion/styled';
 
 
 const TemperatureLogoContainer = styled.div`
-  width: 26px;
-  height: 26px;
+  display: flex;
+  align-items: center;
+  width: 2.2rem;
+  height: 2.2rem;
   background-color: ${props => props.theme.colors.green};
   border-radius: 45px;
 `;
 
 const TemperatureText = styled.div`
   text-align: center;
-  padding-top: 8px;
-  font-size: 8px;
+  width: 100%;
+  font-size: 0.7rem;
   font-weight: bold;
   color: ${props => props.theme.colors.light1};
 `;

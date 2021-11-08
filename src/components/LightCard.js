@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 
 import LightIconSvg from '../resources/icons/light-bulb.svg';
-import { Card } from './Card';
+import { GridCard } from './GridCard';
 import { ModalLight } from './Modals';
 
 const LightIconContainer = styled.div`
@@ -27,7 +27,7 @@ export function LightCard(props) {
 
   return (
     <React.Fragment>
-      <Card
+      <GridCard
         icon={
           props.icon ?
             props.icon :
