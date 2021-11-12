@@ -1,5 +1,4 @@
-import React, {useState} from 'react';
-import PropTypes from 'prop-types';
+import React, { FC, ReactNode, useState } from 'react';
 import styled from '@emotion/styled';
 import classNames from 'classnames';
 import { Bounce} from "./Card";
@@ -8,7 +7,12 @@ const Wrapper = styled.div`
   display: inline-block;
 `;
 
-export const GridCardContainer = styled.div`
+interface GridCardContainerProps {
+  readonly isActive?: boolean;
+  readonly animate?: boolean;
+}
+
+export const GridCardContainer = styled.div<GridCardContainerProps> `
   display: grid;
   padding: 10px;
   grid-template-areas: 
@@ -33,7 +37,7 @@ export const GridCardContainer = styled.div`
   }
 `;
 
-const CardName = styled.div`
+const CardName = styled.div<GridCardContainerProps>`
   justify-self: start;
   align-self: flex-end;
   grid-area: name;
@@ -56,7 +60,7 @@ const CardStatus = styled.div`
   color: darkgrey;
 `;
 
-export const CardIcon = styled.div`
+export const CardIcon = styled.div<GridCardContainerProps>`
   justify-self: start;
   grid-area: icon;
   width: 2.2rem;
@@ -64,17 +68,34 @@ export const CardIcon = styled.div`
   margin-bottom: 0.5rem;
 `;
 
-var buttonPressTimer;
+let buttonPressTimer: NodeJS.Timeout;
+
+interface GridCardProps {
+  /** Children */
+  children?: ReactNode;
+  /** Action triggered on press */
+  handlePress?: () => void;
+  /** Action triggered on long press */
+  handleLongPress?: () => void;
+  /** Icon of the card */
+  icon: ReactNode;
+  /** State of the card */
+  isActive: boolean;
+  /** Name label of the card */
+  name: string;
+  /** State label of the card */
+  state: string;
+}
 
 /**
  * Base Card to be customized
  */
-export function GridCard(props) {
+export const GridCard: FC<GridCardProps> = (props) => {
   const [animate, setAnimate] = useState(false);
 
   function handlePress() {
     setAnimate(true);
-    setTimeout(() => setAnimate(false), 500)
+    setTimeout(() => setAnimate(false), 500);
     if (props.handlePress) {
       props.handlePress();
     }
@@ -82,7 +103,7 @@ export function GridCard(props) {
 
   function handleButtonPress () {
     if (props.handleLongPress) {
-      buttonPressTimer = setTimeout(() => props.handleLongPress(), 1000);
+      buttonPressTimer = setTimeout(() => props.handleLongPress && props.handleLongPress(), 1000);
     }
   }
 
@@ -91,42 +112,25 @@ export function GridCard(props) {
   }
 
   return (
-      <Wrapper>
-          <GridCardContainer
-              className={classNames({
-                'animate': animate,
-              })}
-            isActive={props.isActive}
-            onClick={handlePress}
-            onTouchStart={handleButtonPress}
-            onTouchEnd={handleButtonRelease}
-            onMouseDown={handleButtonPress}
-            onMouseUp={handleButtonRelease}
-            onMouseLeave={handleButtonRelease}
-            animate={animate}
-          >
-            <CardIcon isActive={props.isActive}>{props.icon}</CardIcon>
-            <CardName isActive={props.isActive}>{props.name}</CardName>
-            <CardStatus isActive={props.isActive}>{props.state}</CardStatus>
-            {props.children}
-          </GridCardContainer>
-      </Wrapper>
+    <Wrapper>
+      <GridCardContainer
+          className={classNames({
+            'animate': animate,
+          })}
+        isActive={props.isActive}
+        onClick={handlePress}
+        onTouchStart={handleButtonPress}
+        onTouchEnd={handleButtonRelease}
+        onMouseDown={handleButtonPress}
+        onMouseUp={handleButtonRelease}
+        onMouseLeave={handleButtonRelease}
+        animate={animate}
+      >
+        <CardIcon isActive={props.isActive}>{props.icon}</CardIcon>
+        <CardName isActive={props.isActive}>{props.name}</CardName>
+        <CardStatus>{props.state}</CardStatus>
+        {props.children}
+      </GridCardContainer>
+    </Wrapper>
   );
-}
-
-GridCard.propTypes = {
-  /** Children */
-  children: PropTypes.element,
-  /** Action triggered on press */
-  handlePress: PropTypes.func,
-  /** Action triggered on long press */
-  handleLongPress: PropTypes.func,
-  /** Icon of the card */
-  icon: PropTypes.element.isRequired,
-  /** State of the card */
-  isActive: PropTypes.bool.isRequired,
-  /** Name label of the card */
-  name: PropTypes.string.isRequired,
-  /** State label of the card */
-  state: PropTypes.string.isRequired,
 };

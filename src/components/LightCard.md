@@ -2,7 +2,7 @@
 
 Click and hold to display more options
 
-```js
+```tsx
 const [isActive, setIsActive] = React.useState(true);
 
 <LightCard
@@ -16,7 +16,7 @@ const [isActive, setIsActive] = React.useState(true);
 
 Click and hold to set the brightness
 
-```js
+```tsx
 const [isActive, setIsActive] = React.useState(true);
 const [brightness, setBrightness] = React.useState(100);
 

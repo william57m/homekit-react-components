@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { FC, ReactNode } from 'react';
 import styled from '@emotion/styled';
 
 import CloseIconSvg from '../../../resources/icons/close.svg';
@@ -49,7 +48,18 @@ const CloseIconContainer = styled.div`
   }
 `;
 
- export function ModalHeader(props) {
+interface ModalHeaderProps {
+  /** Method to close the modal */
+  readonly close: () => void;
+  /** Icon of the header */
+  readonly icon: ReactNode;
+  /** Subtitle of the header */
+  readonly subtitle: string;
+  /** Title of the header */
+  readonly title: string;
+}
+
+export const ModalHeader: FC<ModalHeaderProps> = (props) => {
   return (
     <ModalHeaderContainer>
       <IconContainer>
@@ -64,15 +74,4 @@ const CloseIconContainer = styled.div`
       </CloseIconContainer>
     </ModalHeaderContainer>
   );
-}
-
-ModalHeader.propTypes = {
-  /** Method to close the modal */
-  close: PropTypes.func.isRequired,
-  /** Icon of the header */
-  icon: PropTypes.element.isRequired,
-  /** Subtitle of the header */
-  subtitle: PropTypes.string.isRequired,
-  /** Title of the header */
-  title: PropTypes.string.isRequired,
 };

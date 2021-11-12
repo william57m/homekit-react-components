@@ -14,7 +14,19 @@ const colors = {
   lightInactive: '#404040',
 };
 
-export const theme = {
+interface Colors {
+  [key: string]: string;
+}
+
+interface Theme {
+  colors: Colors,
+  card: any,
+  cameraCard: any,
+  sceneCard: any,
+  modal: any,
+}
+
+export const theme: Theme = {
   colors: colors,
   card: {
     size: '100px',

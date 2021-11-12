@@ -1,9 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { FC } from 'react';
 import Modal from 'react-modal';
 import styled from '@emotion/styled';
-import CircularSlider from '@fseehawer/react-circular-slider';
-import Picker from 'react-mobile-picker';
+// import CircularSlider from '@fseehawer/react-circular-slider';
+// import Picker from 'react-mobile-picker';
 
 import { ModalContainer, ModalContent, ModalHeader, ModalStyle } from './Common';
 import { TemperatureIcon } from '../Common/TemperatureIcon';
@@ -32,16 +31,48 @@ const LabelTemperature = styled.div`
   font-weight: bold;
 `;
 
-export function ModalThermostat(props) {
-  const on = props.currentMode !== 'Off';
-  const stateLabel = on ? `Heat to ${props.targetTemperature.toFixed(1)}°` : 'Off';
 
-  function handleSliderChange(value) {
-    props.onTemperatureChange(value);
+interface ModalThermostatProps {
+  /** Method to close the modal */
+  readonly close: () => void;
+  /** Current mode */
+  readonly currentMode?: string;
+  /** Current temperature */
+  readonly currentTemperature?: number;
+  /** List of modes available */
+  readonly modes?: string[];
+  /** Name of the thermostat */
+  readonly name: string;
+  /** Target temperature */
+  readonly targetTemperature?: number;
+  /** Action triggered on temperature change */
+  readonly onTemperatureChange?: (value: number) => void;
+  /** Action triggered on mode change */
+  readonly onModeChange?: (value: string) => void;
+  /** State of the modal */
+  readonly show: boolean;
+  /** State label of the thermostat */
+  readonly state: string;
+  /** Temperature max */
+  readonly tempMax?: number;
+  /** Temperature min */
+  readonly tempMin?: number;
+};
+
+export const ModalThermostat: FC<ModalThermostatProps> = (props) => {
+  const on = props.currentMode !== 'Off';
+  const stateLabel = on ? `Heat to ${props.targetTemperature!.toFixed(1)}°` : 'Off';
+
+  function handleSliderChange(value: number) {
+    if (props.onTemperatureChange) {
+      props.onTemperatureChange(value);
+    }
   }
 
-  function handleModeChange(key, value) {
-    props.onModeChange(value);
+  function handleModeChange(key: string, value: string) {
+    if (props.onModeChange) {
+      props.onModeChange(value);
+    }
   }
 
 
@@ -50,7 +81,7 @@ export function ModalThermostat(props) {
       isOpen={props.show}
       onRequestClose={props.close}
       contentLabel="Example Modal"
-      style={ModalStyle}
+      // style={ModalStyle}
     >
       <ModalContainer>
         <ModalHeader
@@ -58,12 +89,12 @@ export function ModalThermostat(props) {
           subtitle={stateLabel}
           close={props.close}
           icon={
-            <TemperatureIcon temperature={props.currentTemperature} />
+            <TemperatureIcon temperature={props.currentTemperature!} />
           }
         />
         <ModalContent>
           <CircularSliderContainer>
-            <CircularSlider
+            {/* <CircularSlider
               label="Temperature"
               hideLabelValue={true}
               appendToValue="°"
@@ -80,13 +111,13 @@ export function ModalThermostat(props) {
               dataIndex={props.targetTemperature - props.tempMin}
               onChange={handleSliderChange}
               hideKnob={!on}
-            />
+            /> */}
             <LabelContainer>
               <LabelTitle>{on ? "HEATING TO" : "NOW"}</LabelTitle>
-              <LabelTemperature>{on ? props.targetTemperature.toFixed(1) : props.currentTemperature.toFixed(1)}°</LabelTemperature>
+              <LabelTemperature>{on ? props.targetTemperature!.toFixed(1) : props.currentTemperature!.toFixed(1)}°</LabelTemperature>
             </LabelContainer>
           </CircularSliderContainer>
-          <Picker
+          {/* <Picker
             height={100}
             optionGroups={{
               mode: props.modes,
@@ -94,36 +125,9 @@ export function ModalThermostat(props) {
             valueGroups={{
               mode: props.currentMode,
             }}
-            onChange={handleModeChange} />
+            onChange={handleModeChange} /> */}
         </ModalContent>
       </ModalContainer>
     </Modal>
   );
-}
-
-ModalThermostat.propTypes = {
-  /** Method to close the modal */
-  close: PropTypes.func.isRequired,
-  /** Current mode */
-  currentMode: PropTypes.string,
-  /** Current temperature */
-  currentTemperature: PropTypes.number,
-  /** List of modes available */
-  modes: PropTypes.array,
-  /** Name of the thermostat */
-  name: PropTypes.string.isRequired,
-  /** Target temperature */
-  targetTemperature: PropTypes.number,
-  /** Action triggered on temperature change */
-  onTemperatureChange: PropTypes.func,
-  /** Action triggered on mode change */
-  onModeChange: PropTypes.func,
-  /** State of the modal */
-  show: PropTypes.bool.isRequired,
-  /** State label of the thermostat */
-  state: PropTypes.string.isRequired,
-  /** Temperature max */
-  tempMax: PropTypes.number,
-  /** Temperature min */
-  tempMin: PropTypes.number,
 };

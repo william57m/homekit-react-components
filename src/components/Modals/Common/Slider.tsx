@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { ChangeEvent, FC, useState } from 'react';
 import styled from '@emotion/styled';
 
 
@@ -30,13 +29,23 @@ const CustomSlider = styled.input`
   }
 `;
 
-var timeout;
+let timeout: NodeJS.Timeout;
 
-export function Slider(props) {
+interface SliderProps {
+  /** Color of the slider */
+  readonly color: string;
+  /** Action triggered on slider change */
+  readonly onChange: (value: number) => void;
+  /** Value of the slider */
+  readonly value: number;
+}
+
+
+export const Slider: FC<SliderProps> = (props) => {
   const [value, setValue] = useState(props.value);
 
-  function handleChange(event) {
-    const value = event.target.value;
+  function handleChange(event: ChangeEvent<HTMLInputElement>) {
+    const value = parseInt(event.target.value);
     setValue(value);
     timeout && clearTimeout(timeout);
     timeout = setTimeout(() => {
@@ -56,13 +65,4 @@ export function Slider(props) {
       />
     </SliderContainer>
   );
-}
-
-Slider.propTypes = {
-  /** Color of the slider */
-  color: PropTypes.string.isRequired,
-  /** Action triggered on slider change */
-  onChange: PropTypes.func.isRequired,
-  /** Value of the slider */
-  value: PropTypes.number.isRequired,
 };
