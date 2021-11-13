@@ -14,20 +14,22 @@ module.exports = {
       name: 'UI Components',
       sections: [
         {
-          name: 'Devices',
+          name: 'Accessories',
           exampleMode: 'collapse',
           usageMode: 'expand',
           components: [
-            '../src/components/devices/CameraCard.tsx',
-            '../src/components/devices/LightCard.tsx',
-            '../src/components/devices/ThermostatCard.tsx',
+            '../src/components/accessories/BinarySensorCard/BinarySensorCard.tsx',
+            '../src/components/accessories/CameraCard/CameraCard.tsx',
+            '../src/components/accessories/LightCard/LightCard.tsx',
+            '../src/components/accessories/SwitchCard/SwitchCard.tsx',
+            '../src/components/accessories/ThermostatCard/ThermostatCard.tsx',
           ],
         },
         {
           name: 'Scenes',
           exampleMode: 'collapse',
           usageMode: 'expand',
-          components: '../src/components/scenes/*.tsx',
+          components: '../src/components/scenes/SceneCard/SceneCard.tsx',
         },
         {
           name: 'Layout',

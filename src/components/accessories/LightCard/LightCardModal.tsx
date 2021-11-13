@@ -1,13 +1,14 @@
 import React, { FC, useState } from 'react';
 import Modal from 'react-modal';
 
-import LightIconSvg from '../../resources/icons/light-bulb.svg';
-import { ModalContainer, ModalContent, ModalHeader, ModalStyle } from '../common/modals';
-import { Slider, Switch } from '../common';
-import { Capabilities } from '../types';
+import LightIconSvg from '../../../resources/icons/light-bulb.svg';
+import { ModalContainer, ModalContent, ModalHeader, ModalStyle } from '../../common/modals';
+import { Slider, Switch } from '../../common';
+import { Capabilities } from '../../types';
 
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
 Modal.setAppElement('html');
+
 
 interface LightCardModalProps {
   /** Brightness value */
@@ -20,10 +21,10 @@ interface LightCardModalProps {
   readonly color?: string;
   /** Name of the light */
   readonly name: string;
-  /** Action triggered on toggle switch */
-  readonly onToggle?: () => void;
   /** State of the light */
   readonly on: boolean;
+  /** Action triggered on toggle switch */
+  readonly onToggle?: () => void;
   /** Action triggered on brightness change */
   readonly onBrightnessChange?: (value: number) => void;
   /** Action triggered on color change */
@@ -35,7 +36,7 @@ interface LightCardModalProps {
 }
 
 export const LightCardModal: FC<LightCardModalProps> = (props) => {
-  const [color] = useState('#F8CC46');
+  const [ color ] = useState('#F8CC46');
 
   const stateLabel = props.capabilities.SUPPORT_BRIGHTNESS ?
     (props.brightness && props.brightness > 0 ? `${props.brightness}% Brightness` : props.state) :
@@ -66,12 +67,12 @@ export const LightCardModal: FC<LightCardModalProps> = (props) => {
         <ModalContent>
           {props.capabilities.SUPPORT_BRIGHTNESS ?
             <Slider
-              value={props.brightness!}
+              value={props.brightness || 0}
               onChange={handleSliderChange}
               color={color}
             /> :
             <Switch
-              on={props.on}
+              isActive={props.on}
               onToggle={() => props.onToggle && props.onToggle()}
             />
           }

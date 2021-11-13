@@ -1,4 +1,4 @@
-### Regular light
+#### Regular light
 
 Click and hold to display more options
 
@@ -12,7 +12,7 @@ const [isActive, setIsActive] = React.useState(true);
 />
 ```
 
-### Dimmable light
+#### Dimmable light
 
 Click and hold to set the brightness
 

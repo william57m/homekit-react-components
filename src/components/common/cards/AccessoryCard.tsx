@@ -1,13 +1,10 @@
 import React, { FC, ReactNode } from 'react';
 import styled from '@emotion/styled';
 
-import { ActionableCardContainer } from './Card';
+import { ActionableCardContainer, CardIcon, CardName, CardState } from './Card';
 
-interface DeviceCardContainerProps {
-  readonly isActive?: boolean;
-}
 
-export const DeviceCardContainer = styled<FC<DeviceCardContainerProps>>(ActionableCardContainer)`
+export const AccessoryCardContainer = styled(ActionableCardContainer)`
   display: grid;
   padding: 10px;
   grid-template-areas: 
@@ -26,7 +23,7 @@ export const DeviceCardContainer = styled<FC<DeviceCardContainerProps>>(Actionab
   font-family: 'SF UI Display';
 `;
 
-const GridCardName = styled.div<DeviceCardContainerProps>`
+export const AccessoryCardName = styled(CardName)`
   justify-self: start;
   align-self: flex-end;
   grid-area: name;
@@ -34,53 +31,45 @@ const GridCardName = styled.div<DeviceCardContainerProps>`
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  font-size: ${props => props.theme.card.name.size};
-  font-weight: ${props => props.theme.card.name.weight};
-  color: ${props => props.isActive ? props.theme.card.name.colorActive : props.theme.card.name.colorInactive};
   margin-bottom: 0.2rem;
   text-overflow: ellipsis;
 `;
 
-const GridCardStatus = styled.div<DeviceCardContainerProps>`
+export const AccessoryCardStatus = styled(CardState)`
   justify-self: start;
   align-self: center;
   grid-area: status;
-  font-size: ${props => props.theme.card.state.size};
-  font-weight: ${props => props.theme.card.state.weight};
-  color: ${props => props.isActive ? props.theme.card.state.colorActive : props.theme.card.state.colorInactive};
 `;
 
-export const GridCardIcon = styled.div<DeviceCardContainerProps>`
+export const AccessoryCardIcon = styled(CardIcon)`
   justify-self: start;
   grid-area: icon;
   width: 1.8rem;
-  filter: ${props => props.isActive ? 'grayscale(0%)' : 'grayscale(100%)'} ;
   margin-bottom: 0.5rem;
 `;
 
 let buttonPressTimer: NodeJS.Timeout;
 
-interface DeviceCardProps {
+interface AccessoryCardProps {
   /** Children */
-  children?: ReactNode;
+  readonly children?: ReactNode;
+  /** Custom className */
+  readonly className?: string;
   /** Action triggered on long press */
-  handleLongPress?: () => void;
+  readonly handleLongPress?: () => void;
   /** Action triggered on press */
-  handlePress?: () => void;
+  readonly handlePress?: () => void;
   /** Icon of the card */
-  icon: ReactNode;
+  readonly icon: ReactNode;
   /** State of the card */
-  isActive: boolean;
+  readonly isActive: boolean;
   /** Name label of the card */
-  name: string;
+  readonly name: string;
   /** State label of the card */
-  state: string;
+  readonly state: string;
 }
 
-/**
- * Base device card to be customized
- */
-export const DeviceCard: FC<DeviceCardProps> = (props) => {
+export const AccessoryCard: FC<AccessoryCardProps> = (props) => {
 
   function handlePress() {
     if (props.handlePress) {
@@ -99,7 +88,8 @@ export const DeviceCard: FC<DeviceCardProps> = (props) => {
   }
 
   return (
-    <DeviceCardContainer
+    <AccessoryCardContainer
+      className={props.className}
       isActive={props.isActive}
       onClick={handlePress}
       onTouchStart={handleButtonPress}
@@ -108,10 +98,10 @@ export const DeviceCard: FC<DeviceCardProps> = (props) => {
       onMouseUp={handleButtonRelease}
       onMouseLeave={handleButtonRelease}
     >
-      <GridCardIcon isActive={props.isActive}>{props.icon}</GridCardIcon>
-      <GridCardName isActive={props.isActive}>{props.name}</GridCardName>
-      <GridCardStatus>{props.state}</GridCardStatus>
+      <AccessoryCardIcon isActive={props.isActive}>{props.icon}</AccessoryCardIcon>
+      <AccessoryCardName isActive={props.isActive}>{props.name}</AccessoryCardName>
+      <AccessoryCardStatus isActive={props.isActive}>{props.state}</AccessoryCardStatus>
       {props.children}
-    </DeviceCardContainer>
+    </AccessoryCardContainer>
   );
 };

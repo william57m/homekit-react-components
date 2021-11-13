@@ -22,9 +22,6 @@ const Components = styled.div`
   }
 `;
 
-/**
- * Base Card to be customized
- */
 export const SectionLayout: FC<SectionLayoutProps> = ({ children, title }) => {
   return (
     <SectionLayoutContainer>

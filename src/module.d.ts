@@ -10,6 +10,7 @@ declare module '@emotion/react' {
     card: any,
     cameraCard: any,
     sceneCard: any,
+    sensorCard: any,
     modal: any,
     layout: any,
   }

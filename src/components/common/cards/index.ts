@@ -1,2 +1,2 @@
 export * from './Card';
-export * from './DeviceCard';
+export * from './AccessoryCard';

@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 
 import CloseIconSvg from '../../../resources/icons/close.svg';
 
+
 const ModalHeaderContainer = styled.div`
   height: 24px;
   padding: 10px;
