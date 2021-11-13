@@ -1,17 +1,19 @@
 import React, { FC, useState } from 'react';
 import Modal from 'react-modal';
 
-import { ModalContainer, ModalContent, ModalHeader, ModalStyle, Slider, Switch } from './Common';
 import LightIconSvg from '../../resources/icons/light-bulb.svg';
+import { ModalContainer, ModalContent, ModalHeader, ModalStyle } from '../common/modals';
+import { Slider, Switch } from '../common';
+import { Capabilities } from '../types';
 
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
 Modal.setAppElement('html');
 
-interface ModalLightProps {
+interface LightCardModalProps {
   /** Brightness value */
   readonly brightness?: number;
   /** Capabilities of the light */
-  readonly capabilities: any;
+  readonly capabilities: Capabilities;
   /** Method to close the modal */
   readonly close: () => void;
   /** Color of the light */
@@ -32,7 +34,7 @@ interface ModalLightProps {
   readonly state: string;
 }
 
-export const ModalLight: FC<ModalLightProps> = (props) => {
+export const LightCardModal: FC<LightCardModalProps> = (props) => {
   const [color] = useState('#F8CC46');
 
   const stateLabel = props.capabilities.SUPPORT_BRIGHTNESS ?
@@ -50,7 +52,7 @@ export const ModalLight: FC<ModalLightProps> = (props) => {
       isOpen={props.show}
       onRequestClose={props.close}
       contentLabel="Example Modal"
-      // style={ModalStyle}
+      style={ModalStyle}
     >
       <ModalContainer>
         <ModalHeader

@@ -1,13 +1,13 @@
 import React, { FC, ReactNode } from 'react';
 import styled from '@emotion/styled';
 
-import { CardContainer } from './Card';
+import { ActionableCardContainer } from '../common/cards';
 
 interface SceneCardContainerProps {
   isActive: boolean;
 }
 
-const SceneCardContainer = styled(CardContainer)<SceneCardContainerProps>`
+const SceneCardContainer = styled(ActionableCardContainer)<SceneCardContainerProps>`
   width: ${props => props.theme.sceneCard.width};
   height: 60px;
   display: flex;

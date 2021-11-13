@@ -1,9 +1,10 @@
 import React, { FC, ReactNode, useState } from 'react';
 import styled from '@emotion/styled';
 
-import { default as LightIconSvg} from '../resources/icons/light-bulb.svg';
-import { GridCard } from './GridCard';
-import { ModalLight } from './Modals';
+import { ReactComponent as LightIconSvg} from '../../resources/icons/light-bulb.svg';
+import { DeviceCard } from '../common/cards/DeviceCard';
+import { LightCardModal } from './LightCardModal';
+import { Capabilities } from '../types';
 
 interface LightIconContainerProps {
   readonly on: boolean;
@@ -28,7 +29,7 @@ interface LightCardProps {
   /** Brightness of the light */
   readonly brightness?: number;
   /** Capabilities of the light (dimmable, color, ...) */
-  readonly capabilities?: any;
+  readonly capabilities?: Capabilities;
 }
 
 export const LightCard: FC<LightCardProps> = ({
@@ -58,12 +59,12 @@ export const LightCard: FC<LightCardProps> = ({
 
   return (
     <React.Fragment>
-      <GridCard
+      <DeviceCard
         icon={
           icon ?
             icon :
             <LightIconContainer on={on}>
-              <img src={LightIconSvg} />
+              <LightIconSvg />
             </LightIconContainer>
         }
         name={name}
@@ -72,7 +73,7 @@ export const LightCard: FC<LightCardProps> = ({
         handlePress={onToggle}
         handleLongPress={handleLongPress}
       />
-      <ModalLight
+      <LightCardModal
         name={name}
         state={stateLabel}
         capabilities={capabilities}

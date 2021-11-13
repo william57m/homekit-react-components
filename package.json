@@ -32,6 +32,7 @@
     "@emotion/babel-plugin": "^11.3.0",
     "@emotion/react": "^11.5.0",
     "@emotion/styled": "^11.3.0",
+    "@svgr/webpack": "^5.5.0",
     "@types/react": "^17.0.34",
     "@types/react-modal": "^3.13.1",
     "@typescript-eslint/eslint-plugin": "^5.3.1",
@@ -64,7 +65,6 @@
   },
   "dependencies": {
     "@fseehawer/react-circular-slider": "^2.3.5",
-    "classnames": "^2.3.1",
     "react-mobile-picker": "^0.1.12",
     "react-modal": "^3.14.4"
   }

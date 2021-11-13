@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
 import Modal from 'react-modal';
 import styled from '@emotion/styled';
-// import CircularSlider from '@fseehawer/react-circular-slider';
-// import Picker from 'react-mobile-picker';
+import CircularSlider from '@fseehawer/react-circular-slider';
+import Picker from 'react-mobile-picker';
 
-import { ModalContainer, ModalContent, ModalHeader, ModalStyle } from './Common';
-import { TemperatureIcon } from '../Common/TemperatureIcon';
+import { ModalContainer, ModalContent, ModalHeader, ModalStyle } from '../common/modals';
+import { TemperatureIcon } from '../common/TemperatureIcon';
 
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
 Modal.setAppElement('html');
@@ -32,19 +32,19 @@ const LabelTemperature = styled.div`
 `;
 
 
-interface ModalThermostatProps {
+interface ThermostatCardModalProps {
   /** Method to close the modal */
   readonly close: () => void;
   /** Current mode */
   readonly currentMode?: string;
   /** Current temperature */
-  readonly currentTemperature?: number;
+  readonly currentTemperature: number;
   /** List of modes available */
   readonly modes?: string[];
   /** Name of the thermostat */
   readonly name: string;
   /** Target temperature */
-  readonly targetTemperature?: number;
+  readonly targetTemperature: number;
   /** Action triggered on temperature change */
   readonly onTemperatureChange?: (value: number) => void;
   /** Action triggered on mode change */
@@ -54,52 +54,65 @@ interface ModalThermostatProps {
   /** State label of the thermostat */
   readonly state: string;
   /** Temperature max */
-  readonly tempMax?: number;
+  readonly tempMax: number;
   /** Temperature min */
-  readonly tempMin?: number;
+  readonly tempMin: number;
 };
 
-export const ModalThermostat: FC<ModalThermostatProps> = (props) => {
-  const on = props.currentMode !== 'Off';
-  const stateLabel = on ? `Heat to ${props.targetTemperature!.toFixed(1)}°` : 'Off';
+export const ThermostatCardModal: FC<ThermostatCardModalProps> = ({
+  close,
+  currentMode,
+  currentTemperature,
+  modes,
+  name,
+  targetTemperature,
+  onTemperatureChange,
+  onModeChange,
+  show,
+  state,
+  tempMax,
+  tempMin,
+}) => {
+  const on = currentMode !== 'Off';
+  const stateLabel = on ? `Heat to ${targetTemperature.toFixed(1)}°` : 'Off';
 
   function handleSliderChange(value: number) {
-    if (props.onTemperatureChange) {
-      props.onTemperatureChange(value);
+    if (onTemperatureChange) {
+      onTemperatureChange(value);
     }
   }
 
   function handleModeChange(key: string, value: string) {
-    if (props.onModeChange) {
-      props.onModeChange(value);
+    if (onModeChange) {
+      onModeChange(value);
     }
   }
 
 
   return (
     <Modal
-      isOpen={props.show}
-      onRequestClose={props.close}
+      isOpen={show}
+      onRequestClose={close}
       contentLabel="Example Modal"
-      // style={ModalStyle}
+      style={ModalStyle}
     >
       <ModalContainer>
         <ModalHeader
-          title={props.name}
+          title={name}
           subtitle={stateLabel}
-          close={props.close}
+          close={close}
           icon={
-            <TemperatureIcon temperature={props.currentTemperature!} />
+            <TemperatureIcon temperature={currentTemperature} />
           }
         />
         <ModalContent>
           <CircularSliderContainer>
-            {/* <CircularSlider
+            <CircularSlider
               label="Temperature"
               hideLabelValue={true}
               appendToValue="°"
-              min={props.tempMin}
-              max={props.tempMax}
+              min={tempMin}
+              max={tempMax}
               width={250}
               knobPosition="bottom"
               knobColor="#005a58"
@@ -108,24 +121,24 @@ export const ModalThermostat: FC<ModalThermostatProps> = (props) => {
               progressSize={24}
               trackColor="#eeeeee"
               trackSize={24}
-              dataIndex={props.targetTemperature - props.tempMin}
+              dataIndex={targetTemperature - tempMin}
               onChange={handleSliderChange}
               hideKnob={!on}
-            /> */}
+            />
             <LabelContainer>
               <LabelTitle>{on ? "HEATING TO" : "NOW"}</LabelTitle>
-              <LabelTemperature>{on ? props.targetTemperature!.toFixed(1) : props.currentTemperature!.toFixed(1)}°</LabelTemperature>
+              <LabelTemperature>{on ? targetTemperature.toFixed(1) : currentTemperature.toFixed(1)}°</LabelTemperature>
             </LabelContainer>
           </CircularSliderContainer>
-          {/* <Picker
+          <Picker
             height={100}
             optionGroups={{
-              mode: props.modes,
+              mode: modes,
             }}
             valueGroups={{
-              mode: props.currentMode,
+              mode: currentMode,
             }}
-            onChange={handleModeChange} /> */}
+            onChange={handleModeChange} />
         </ModalContent>
       </ModalContainer>
     </Modal>

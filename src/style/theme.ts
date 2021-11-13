@@ -24,6 +24,7 @@ interface Theme {
   cameraCard: any,
   sceneCard: any,
   modal: any,
+  layout: any,
 }
 
 export const theme: Theme = {
@@ -77,6 +78,13 @@ export const theme: Theme = {
         weight: 'bold',
         color: colors.lightGray,
       },
+    },
+  },
+  layout: {
+    title: {
+      size: '20px',
+      weight: '200',
+      color: colors.light1,
     },
   },
 };

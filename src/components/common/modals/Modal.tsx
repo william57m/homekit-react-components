@@ -19,7 +19,7 @@ export const ModalContent = styled.div`
 
 export const ModalStyle = {
   overlay: {
-    position: 'fixed',
+    // position: 'fixed',
     padding: 0,
     backgroundColor: '#404040CC',
   },

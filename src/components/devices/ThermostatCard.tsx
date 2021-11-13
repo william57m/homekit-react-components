@@ -1,8 +1,8 @@
 import React, { FC, useState } from 'react';
 
-import { ModalThermostat } from './Modals';
-import { TemperatureIcon } from './Common/TemperatureIcon';
-import {GridCard} from "./GridCard";
+import { ThermostatCardModal } from './ThermostatCardModal';
+import { TemperatureIcon } from '../common/TemperatureIcon';
+import { DeviceCard } from '../common/cards/DeviceCard';
 
 interface ThermostatCardProps {
   /** Current mode */
@@ -51,7 +51,7 @@ export const ThermostatCard: FC<ThermostatCardProps> = ({
 
   return (
     <React.Fragment>
-      <GridCard
+      <DeviceCard
         icon={
           <TemperatureIcon temperature={currentTemperature} />
         }
@@ -61,7 +61,7 @@ export const ThermostatCard: FC<ThermostatCardProps> = ({
         handlePress={handleLongPress}
         handleLongPress={handleLongPress}
       />
-      <ModalThermostat
+      <ThermostatCardModal
         name={name}
         state={stateLabel}
         currentMode={currentMode}

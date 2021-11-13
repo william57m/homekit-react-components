@@ -5,8 +5,8 @@ import styled from '@emotion/styled';
 const TemperatureLogoContainer = styled.div`
   display: flex;
   align-items: center;
-  width: 2.2rem;
-  height: 2.2rem;
+  width: 1.8rem;
+  height: 1.8rem;
   background-color: ${props => props.theme.colors.green};
   border-radius: 45px;
 `;
@@ -14,7 +14,7 @@ const TemperatureLogoContainer = styled.div`
 const TemperatureText = styled.div`
   text-align: center;
   width: 100%;
-  font-size: 0.7rem;
+  font-size: 0.5rem;
   font-weight: bold;
   color: ${props => props.theme.colors.light1};
 `;

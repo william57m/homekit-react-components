@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import styled from '@emotion/styled';
 
+
 interface SliderProps {
   on: boolean;
 }
