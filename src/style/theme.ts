@@ -18,11 +18,12 @@ interface Colors {
   [key: string]: string;
 }
 
-interface Theme {
+export interface Theme {
   colors: Colors,
   card: any,
   cameraCard: any,
   sceneCard: any,
+  sensorCard: any,
   modal: any,
   layout: any,
 }
@@ -56,6 +57,12 @@ export const theme: Theme = {
   cameraCard: {
     width: '396px',
     height: '240px',
+  },
+  sensorCard: {
+    state: {
+      colorActive: '#DB5242',
+      colorInactive: colors.gray + 'A0',
+    },
   },
   sceneCard: {
     width: '206px',

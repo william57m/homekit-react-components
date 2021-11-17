@@ -4,8 +4,8 @@ import styled from '@emotion/styled';
 import CircularSlider from '@fseehawer/react-circular-slider';
 import Picker from 'react-mobile-picker';
 
-import { ModalContainer, ModalContent, ModalHeader, ModalStyle } from '../common/modals';
-import { TemperatureIcon } from '../common/TemperatureIcon';
+import { ModalContainer, ModalContent, ModalHeader, ModalStyle } from '../../common/modals';
+import { TemperatureIcon } from '../../common/TemperatureIcon';
 
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
 Modal.setAppElement('html');
@@ -21,16 +21,17 @@ const LabelContainer = styled.div`
   top: 85px;
   left: 70px;
 `;
+
 const LabelTitle = styled.div`
   color: #F29F41;
   font-size: 14px;
   font-weight: 600;
 `;
+
 const LabelTemperature = styled.div`
   font-size: 48px;
   font-weight: bold;
 `;
-
 
 interface ThermostatCardModalProps {
   /** Method to close the modal */
@@ -57,7 +58,7 @@ interface ThermostatCardModalProps {
   readonly tempMax: number;
   /** Temperature min */
   readonly tempMin: number;
-};
+}
 
 export const ThermostatCardModal: FC<ThermostatCardModalProps> = ({
   close,

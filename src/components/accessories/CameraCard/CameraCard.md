@@ -3,7 +3,7 @@ Camera with valid stream
 ```tsx
 <CameraCard
   name="Backyard"
-  previewImageSrc={'../../styleguide/images/camera_example.png'}
+  previewImageSrc={'../../styleguide/images/camera_example.jpeg'}
 />
 ```
 

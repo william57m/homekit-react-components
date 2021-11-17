@@ -40,7 +40,6 @@ interface SliderProps {
   readonly value: number;
 }
 
-
 export const Slider: FC<SliderProps> = (props) => {
   const [value, setValue] = useState(props.value);
 

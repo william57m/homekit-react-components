@@ -1,28 +1,30 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 
+import { AccessoryCard } from '../../common/cards/AccessoryCard';
+import { useModalHelper } from '../../common/hooks';
+import { TemperatureIcon } from '../../common/TemperatureIcon';
 import { ThermostatCardModal } from './ThermostatCardModal';
-import { TemperatureIcon } from '../common/TemperatureIcon';
-import { DeviceCard } from '../common/cards/DeviceCard';
+
 
 interface ThermostatCardProps {
   /** Current mode */
-  currentMode: string;
+  readonly currentMode: string;
   /** Current temperature */
-  currentTemperature: number;
+  readonly currentTemperature: number;
   /** Modes available */
-  modes?: string[];
+  readonly modes?: string[];
   /** Name of the thermostat */
-  name: string;
+  readonly name: string;
   /** Action triggered when mode change */
-  onModeChange?: (value: string) => void;
+  readonly onModeChange?: (value: string) => void;
   /** Action triggered when temperature change */
-  onTemperatureChange?: (value: number) => void;
+  readonly onTemperatureChange?: (value: number) => void;
   /** Target temperature */
-  targetTemperature: number;
+  readonly targetTemperature: number;
   /** Temperature max */
-  tempMax?: number,
+  readonly tempMax?: number;
   /** Temperature min */
-  tempMin?: number,
+  readonly tempMin?: number;
 }
 
 export const ThermostatCard: FC<ThermostatCardProps> = ({
@@ -36,14 +38,7 @@ export const ThermostatCard: FC<ThermostatCardProps> = ({
   tempMax = 30,
   tempMin = 6,
 }) => {
-  const [showModal, setShowModal] = useState(false);
-
-  function handleLongPress() {
-    setShowModal(true);
-  }
-  function handleCloseModal() {
-    setShowModal(false);
-  }
+  const { showModal, openModal, closeModal } = useModalHelper();
 
   const stateLabel = currentMode !== 'Off' ?
     `Heat to ${targetTemperature.toFixed(1)}°` :
@@ -51,15 +46,15 @@ export const ThermostatCard: FC<ThermostatCardProps> = ({
 
   return (
     <React.Fragment>
-      <DeviceCard
+      <AccessoryCard
         icon={
           <TemperatureIcon temperature={currentTemperature} />
         }
         name={name}
         state={stateLabel}
         isActive={currentMode !== 'Off'}
-        handlePress={handleLongPress}
-        handleLongPress={handleLongPress}
+        handlePress={openModal}
+        handleLongPress={openModal}
       />
       <ThermostatCardModal
         name={name}
@@ -73,7 +68,7 @@ export const ThermostatCard: FC<ThermostatCardProps> = ({
         targetTemperature={targetTemperature}
         onTemperatureChange={onTemperatureChange}
         show={showModal}
-        close={handleCloseModal} />
+        close={closeModal} />
     </React.Fragment>
   );
 };

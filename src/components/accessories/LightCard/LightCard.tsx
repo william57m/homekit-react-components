@@ -1,19 +1,11 @@
-import React, { FC, ReactNode, useState } from 'react';
-import styled from '@emotion/styled';
+import React, { FC, ReactNode } from 'react';
 
-import { ReactComponent as LightIconSvg} from '../../resources/icons/light-bulb.svg';
-import { DeviceCard } from '../common/cards/DeviceCard';
+import { ReactComponent as LightIconSvg} from '../../../resources/icons/light-bulb.svg';
+import { AccessoryCard } from '../../common/cards/AccessoryCard';
+import { useModalHelper } from '../../common/hooks';
+import { Capabilities } from '../../types';
 import { LightCardModal } from './LightCardModal';
-import { Capabilities } from '../types';
 
-interface LightIconContainerProps {
-  readonly on: boolean;
-}
-
-const LightIconContainer = styled.div<LightIconContainerProps>`
-  color: ${props => props.on ? props.theme.card.light.colorActive : props.theme.card.light.colorInactive};
-  font-size: 24px;
-`;
 
 interface LightCardProps {
   /** Custom icon for light */
@@ -44,14 +36,7 @@ export const LightCard: FC<LightCardProps> = ({
   onToggle,
   onBrightnessChange,
 }) => {
-  // Modal
-  const [showModal, setShowModal] = useState(false);
-  function handleLongPress() {
-    setShowModal(true);
-  }
-  function handleCloseModal() {
-    setShowModal(false);
-  }
+  const { showModal, openModal, closeModal } = useModalHelper();
 
   const stateLabel = on ?
     brightness ? `${brightness}%` : 'On' :
@@ -59,19 +44,16 @@ export const LightCard: FC<LightCardProps> = ({
 
   return (
     <React.Fragment>
-      <DeviceCard
+      <AccessoryCard
         icon={
           icon ?
-            icon :
-            <LightIconContainer on={on}>
-              <LightIconSvg />
-            </LightIconContainer>
+            icon : <LightIconSvg />
         }
         name={name}
         state={stateLabel}
         isActive={on}
         handlePress={onToggle}
-        handleLongPress={handleLongPress}
+        handleLongPress={openModal}
       />
       <LightCardModal
         name={name}
@@ -82,7 +64,7 @@ export const LightCard: FC<LightCardProps> = ({
         brightness={brightness}
         onBrightnessChange={onBrightnessChange}
         show={showModal}
-        close={handleCloseModal} />
+        close={closeModal} />
     </React.Fragment>
   );
 };

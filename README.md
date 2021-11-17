@@ -12,9 +12,7 @@ npm install homekit-react-components
 
 ## Usage
 
-1. You first need to wrap your application with emotion ThemeProvider and pass the theme from the library.
-
-🚧 THIS IS HIGHLY SUBJECT TO CHANGE IN ORDER TO FACILITATE USERS 🚧
+1. Wrap your app with the theme provider. For now, no default theme are provided so you will need to inject the theme yourself.
 
 ```js
 import { ThemeProvider } from '@emotion/react';
@@ -51,11 +49,11 @@ Here is a non exhaustive list of the next components to be developed:
 - Sensor Card
 - Switch Card
 - Fan Card
-- Camera Card
 - Media Player Card
 - State component
 - Alarm card
 - Title, section component and different HomeKit layout
+- Support for light/dark mode
 
 
 ## Contribution

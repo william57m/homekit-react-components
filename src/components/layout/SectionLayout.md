@@ -1,5 +1,5 @@
 ```tsx
-import { LightCard } from '../devices/LightCard';
+import { LightCard } from '../accessories/LightCard';
 import { SectionLayout } from './SectionLayout';
 
 <SectionLayout title="Kitchen">
