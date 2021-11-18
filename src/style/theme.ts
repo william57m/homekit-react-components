@@ -1,4 +1,18 @@
-const colors = {
+export interface Colors {
+  [key: string]: string;
+}
+
+export interface Theme {
+  colors: Colors,
+  card: any,
+  cameraCard: any,
+  sceneCard: any,
+  sensorCard: any,
+  modal: any,
+  layout: any,
+}
+
+const colors: Colors = {
   light1: '#FFFFFF',
   light2: '#F0F0F0',
   lightGray: '#808080',
@@ -13,20 +27,6 @@ const colors = {
   lightActive: '#F8CC46',
   lightInactive: '#404040',
 };
-
-interface Colors {
-  [key: string]: string;
-}
-
-export interface Theme {
-  colors: Colors,
-  card: any,
-  cameraCard: any,
-  sceneCard: any,
-  sensorCard: any,
-  modal: any,
-  layout: any,
-}
 
 export const theme: Theme = {
   colors: colors,

@@ -1,10 +1,10 @@
 import React, { FC, useState } from 'react';
 import Modal from 'react-modal';
 
-import LightIconSvg from '../../../resources/icons/light-bulb.svg';
+import { LightIconSvg } from '../../icons';
 import { ModalContainer, ModalContent, ModalHeader, ModalStyle } from '../../common/modals';
 import { Slider, Switch } from '../../common';
-import { Capabilities } from '../../types';
+import { Capabilities } from '../../../types';
 
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
 Modal.setAppElement('html');
@@ -61,7 +61,7 @@ export const LightCardModal: FC<LightCardModalProps> = (props) => {
           subtitle={stateLabel}
           close={props.close}
           icon={
-            <img src={LightIconSvg} />
+            <LightIconSvg />
           }
         />
         <ModalContent>

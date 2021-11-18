@@ -1,1 +1,1 @@
-export { ThermostatCard } from './ThermostatCard';
+export * from './ThermostatCard';

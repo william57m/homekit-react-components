@@ -1,9 +1,12 @@
 ```tsx
-const [isActive, setIsActive] = React.useState(true);
+import { SwitchType } from './SwitchCard'
+
+const [ on, setOn ] = React.useState(true);
 
 <SwitchCard
-  on={isActive}
+  on={on}
+  type={SwitchType.OUTLET}
   name="Outlet Kitchen"
-  onToggle={() => setIsActive(!isActive)}
+  onToggle={() => setOn(prevState => !prevState)}
 />
 ```

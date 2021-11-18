@@ -50,7 +50,7 @@ export const AccessoryCardIcon = styled(CardIcon)`
 
 let buttonPressTimer: NodeJS.Timeout;
 
-interface AccessoryCardProps {
+export interface AccessoryCardProps {
   /** Children */
   readonly children?: ReactNode;
   /** Custom className */
@@ -59,8 +59,10 @@ interface AccessoryCardProps {
   readonly handleLongPress?: () => void;
   /** Action triggered on press */
   readonly handlePress?: () => void;
-  /** Icon of the card */
-  readonly icon: ReactNode;
+  /** Icon for active state */
+  readonly iconActive?: ReactNode;
+  /** Icon for inactive state */
+  readonly iconInactive?: ReactNode;
   /** State of the card */
   readonly isActive: boolean;
   /** Name label of the card */
@@ -87,6 +89,8 @@ export const AccessoryCard: FC<AccessoryCardProps> = (props) => {
     clearTimeout(buttonPressTimer);
   }
 
+  const icon = props.isActive ? props.iconActive : props.iconInactive;
+
   return (
     <AccessoryCardContainer
       className={props.className}
@@ -98,7 +102,7 @@ export const AccessoryCard: FC<AccessoryCardProps> = (props) => {
       onMouseUp={handleButtonRelease}
       onMouseLeave={handleButtonRelease}
     >
-      <AccessoryCardIcon isActive={props.isActive}>{props.icon}</AccessoryCardIcon>
+      <AccessoryCardIcon isActive={props.isActive}>{icon}</AccessoryCardIcon>
       <AccessoryCardName isActive={props.isActive}>{props.name}</AccessoryCardName>
       <AccessoryCardStatus isActive={props.isActive}>{props.state}</AccessoryCardStatus>
       {props.children}

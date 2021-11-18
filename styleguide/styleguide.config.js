@@ -32,10 +32,16 @@ module.exports = {
           components: '../src/components/scenes/SceneCard/SceneCard.tsx',
         },
         {
-          name: 'Layout',
+          name: 'Layouts',
           exampleMode: 'collapse',
           usageMode: 'expand',
-          components: '../src/components/layout/SectionLayout.tsx',
+          components: '../src/components/layout/SectionLayout/SectionLayout.tsx',
+        },
+        {
+          name: 'Icons',
+          exampleMode: 'collapse',
+          usageMode: 'expand',
+          content: '../src/components/icons/index.md',
         },
       ],
     },

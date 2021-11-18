@@ -30,10 +30,12 @@ function App() {
 2. Use any components in your code 🤗
 
 ```js
+const [ on, setOn ] = useState(true);
+
 <LightCard
   name="My Light"
-  on={true}
-  onToggle={() => setIsOn(...)}
+  on={on}
+  onToggle={() => setOn(prevState => !prevState)}
 />
 ```
 

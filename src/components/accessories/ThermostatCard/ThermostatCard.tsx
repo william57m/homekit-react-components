@@ -47,7 +47,10 @@ export const ThermostatCard: FC<ThermostatCardProps> = ({
   return (
     <React.Fragment>
       <AccessoryCard
-        icon={
+        iconActive={
+          <TemperatureIcon temperature={currentTemperature} />
+        }
+        iconInactive={
           <TemperatureIcon temperature={currentTemperature} />
         }
         name={name}

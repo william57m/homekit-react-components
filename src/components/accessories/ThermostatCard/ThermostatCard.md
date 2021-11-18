@@ -1,6 +1,6 @@
 Click or hold to display more options
 
-🚧 I'm currently working on react-circular-slider to be able to stylize it like the temperature slider of Apple. I'm also working on a react-picker to looks the same as the Apple one.
+🚧 WIP
 
 ```tsx
 const [temperature, setTemperature] = React.useState(22.0);

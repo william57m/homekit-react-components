@@ -1,7 +1,7 @@
 import React, { FC, ReactNode } from 'react';
 import styled from '@emotion/styled';
 
-import CloseIconSvg from '../../../resources/icons/close.svg';
+import CloseIconSvg from '../../../resources/icons/modal-close.svg';
 
 
 const ModalHeaderContainer = styled.div`
@@ -13,7 +13,7 @@ const ModalHeaderContainer = styled.div`
 
 const IconContainer = styled.div`
   margin-right: 10px;
-  img {
+  svg, img {
     height: 24px;
   }
 `;

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 
-type UseLoadImageProps = (url: string) => { isLoading: boolean, isLoaded: boolean};
+type UseLoadImageProps = (url: string) => { isLoading: boolean, isLoaded: boolean };
 
 export const useLoadImage: UseLoadImageProps = (url: string) => {
   const [isLoading, setIsLoading] = useState(true);

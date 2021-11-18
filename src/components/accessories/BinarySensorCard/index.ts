@@ -1,1 +1,1 @@
-export { BinarySensorCard } from './BinarySensorCard';
+export * from './BinarySensorCard';

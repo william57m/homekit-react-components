@@ -1,37 +1,57 @@
 import React, { FC, ReactNode } from 'react';
 
-import OutletIconSrc from '../../../resources/icons/outlet-on.png';
+import { SwitchType } from '../../../types';
 import { AccessoryCard } from '../../common/cards/AccessoryCard';
+import { useSwitchIcon, useSwitchLabel } from '../../common/hooks';
 
+export { SwitchType };
 
-const OutletIcon = () => <img src={OutletIconSrc} />;
 
 interface SwitchCardProps {
-  /** Custom icon for the switch */
-  readonly icon?: ReactNode;
+  /** State of the switch */
+  readonly on: boolean;
+  /** Type of the switch */
+  readonly type: SwitchType;
   /** Name of the switch */
   readonly name: string;
   /** Action triggered on press */
   readonly onToggle?: () => void;
-  /** State of the switch */
-  readonly on: boolean;
+  /** Custom icon for active state */
+  readonly iconActive?: ReactNode;
+  /** Custom icon for inactive state */
+  readonly iconInactive?: ReactNode;
+  /** Custom label for active state */
+  readonly labelActive?: string;
+  /** Custom label for inactive state */
+  readonly labelInactive?: string;
 }
 
 export const SwitchCard: FC<SwitchCardProps> = ({
-  icon,
-  name,
   on,
+  type,
+  name,
   onToggle,
+  iconActive,
+  iconInactive,
+  labelActive = 'On',
+  labelInactive = 'Off',
 }) => {
+  const {
+    labelActive: switchLabelActive,
+    labelInactive: switchLabelInactive,
+  } = useSwitchLabel(type, labelActive, labelInactive);
 
-  const stateLabel = on ? 'On' : 'Off';
+  const {
+    iconActive: switchIconActive,
+    iconInactive: switchIconInactive,
+  } = useSwitchIcon(type, iconActive, iconInactive);
+
+  const stateLabel = on ? switchLabelActive : switchLabelInactive;
 
   return (
     <AccessoryCard
-      icon={
-        icon ?
-          icon : <OutletIcon />
-      }
+      iconActive={switchIconActive}
+      iconInactive={switchIconInactive}
       name={name}
       state={stateLabel}
       isActive={on}
