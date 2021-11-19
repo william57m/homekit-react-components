@@ -1,1 +1,1 @@
-export { LightCard } from './LightCard';
+export * from './LightCard';

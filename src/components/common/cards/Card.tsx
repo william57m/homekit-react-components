@@ -34,8 +34,9 @@ export const CardState = styled.div<WithActiveProps>`
 export const CardIcon = styled.div<WithActiveProps>`
   filter: ${props => props.isActive ? 'grayscale(0%)' : 'grayscale(100%)'} ;
 
-  img {
-    max-width: 28px;
+  svg, img {
+    height: 28px;
+    max-height: 28px;
   }
 `;
 

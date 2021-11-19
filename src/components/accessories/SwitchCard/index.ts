@@ -1,1 +1,1 @@
-export { SwitchCard } from './SwitchCard';
+export * from './SwitchCard';

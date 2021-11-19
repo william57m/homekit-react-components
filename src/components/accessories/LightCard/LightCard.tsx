@@ -1,15 +1,17 @@
 import React, { FC, ReactNode } from 'react';
 
-import { ReactComponent as LightIconSvg} from '../../../resources/icons/light-bulb.svg';
+import { LightIconSvg } from '../../icons';
 import { AccessoryCard } from '../../common/cards/AccessoryCard';
 import { useModalHelper } from '../../common/hooks';
-import { Capabilities } from '../../types';
+import { Capabilities } from '../../../types';
 import { LightCardModal } from './LightCardModal';
 
 
 interface LightCardProps {
-  /** Custom icon for light */
-  readonly icon?: ReactNode;
+  /** Custom icon for active light */
+  readonly iconActive?: ReactNode;
+  /** Custom icon for inactive light */
+  readonly iconInactive?: ReactNode;
   /** Action triggered on press */
   readonly onToggle?: () => void;
   /** Action triggered when brightness change */
@@ -30,7 +32,8 @@ export const LightCard: FC<LightCardProps> = ({
     SUPPORT_COLOR: false,
   },
   brightness,
-  icon,
+  iconActive,
+  iconInactive,
   name,
   on,
   onToggle,
@@ -45,10 +48,8 @@ export const LightCard: FC<LightCardProps> = ({
   return (
     <React.Fragment>
       <AccessoryCard
-        icon={
-          icon ?
-            icon : <LightIconSvg />
-        }
+        iconActive={iconActive ? iconActive : <LightIconSvg />}
+        iconInactive={iconInactive ? iconInactive : <LightIconSvg />}
         name={name}
         state={stateLabel}
         isActive={on}

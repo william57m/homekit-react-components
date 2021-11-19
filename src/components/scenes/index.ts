@@ -1,1 +1,1 @@
-export * from './SceneCard';
+export { SceneCard } from './SceneCard';

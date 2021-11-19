@@ -1,5 +1,5 @@
 ```tsx
-import { ReactComponent as HeartIconSvg} from '../../../resources/icons/heart.svg';
+import { ReactComponent as HeartIconSvg } from '../../../../styleguide/images/heart.svg';
 
 const [isActive, setIsActive] = React.useState(true);
 

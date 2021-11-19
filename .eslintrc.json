@@ -27,6 +27,7 @@
     "semi": ["error", "always"],
     "global-require": [0],
     "react/prop-types": "off",
+    "react/display-name": "off",
     "quotes": [2, "single"],
     "@typescript-eslint/ban-types": ["error",
       {

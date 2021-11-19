@@ -3,12 +3,12 @@
 Click and hold to display more options
 
 ```tsx
-const [isActive, setIsActive] = React.useState(true);
+const [ on, setOn ] = React.useState(true);
 
 <LightCard
-  on={isActive}
+  on={on}
   name="Regular Light"
-  onToggle={() => setIsActive(!isActive)}
+  onToggle={() => setOn(prevState => !prevState)}
 />
 ```
 
@@ -17,15 +17,15 @@ const [isActive, setIsActive] = React.useState(true);
 Click and hold to set the brightness
 
 ```tsx
-const [isActive, setIsActive] = React.useState(true);
-const [brightness, setBrightness] = React.useState(100);
+const [ on, setOn ] = React.useState(true);
+const [ brightness, setBrightness ] = React.useState(100);
 
 <LightCard
   name="Dimmable Light"
-  on={isActive}
-  onToggle={() => setIsActive(!isActive)}
-  brightness={isActive ? brightness : 0}
-  onBrightnessChange={(value) => { setBrightness(value); setIsActive(value != 0); }}
+  on={on}
+  onToggle={() => setOn(prevState => !prevState)}
+  brightness={on ? brightness : 0}
+  onBrightnessChange={(value) => { setBrightness(value); setOn(value != 0); }}
   capabilities={{
     SUPPORT_BRIGHTNESS: true
   }}
