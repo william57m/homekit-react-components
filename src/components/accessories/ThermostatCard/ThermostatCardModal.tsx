@@ -127,7 +127,7 @@ export const ThermostatCardModal: FC<ThermostatCardModalProps> = ({
               hideKnob={!on}
             />
             <LabelContainer>
-              <LabelTitle>{on ? "HEATING TO" : "NOW"}</LabelTitle>
+              <LabelTitle>{on ? 'HEATING TO' : 'NOW'}</LabelTitle>
               <LabelTemperature>{on ? targetTemperature.toFixed(1) : currentTemperature.toFixed(1)}°</LabelTemperature>
             </LabelContainer>
           </CircularSliderContainer>

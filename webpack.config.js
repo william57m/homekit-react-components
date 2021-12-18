@@ -9,11 +9,14 @@ module.exports = merge(webpackConfigBase, {
   entry: "./src/index.ts",
   output: {
     filename: "index.js",
-    path: path.resolve(__dirname, "dist/bundle"),
+    path: path.resolve(__dirname, "dist"),
     library: pkg.name,
     libraryTarget: "umd",
     umdNamedDefine: true,
   },
   mode: 'production',
   externals: [nodeExternals()],
+  optimization: {
+    minimize: false,
+  }
 });

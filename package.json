@@ -1,8 +1,10 @@
 {
   "name": "homekit-react-components",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "HomeKit components for React",
   "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "run-s clean build:tsc build:webpack",
     "build:tsc": "tsc",
@@ -25,14 +27,15 @@
   },
   "homepage": "https://github.com/william57m/homekit-react-components#readme",
   "devDependencies": {
-    "@babel/core": "^7.16.0",
+    "@babel/core": "^7.16.5",
     "@babel/plugin-proposal-decorators": "^7.16.0",
-    "@babel/preset-env": "^7.16.0",
-    "@babel/preset-react": "^7.16.0",
+    "@babel/plugin-transform-runtime": "^7.16.5",
+    "@babel/preset-env": "^7.16.5",
+    "@babel/preset-react": "^7.16.5",
     "@babel/preset-typescript": "^7.16.0",
-    "@emotion/babel-plugin": "^11.3.0",
-    "@emotion/react": "^11.5.0",
-    "@emotion/styled": "^11.3.0",
+    "@emotion/babel-plugin": "^11.7.1",
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0",
     "@svgr/webpack": "^5.5.0",
     "@types/react": "^17.0.34",
     "@types/react-modal": "^3.13.1",
@@ -61,13 +64,14 @@
     "webpack-node-externals": "^3.0.0"
   },
   "peerDependencies": {
-    "@emotion/react": "^11.1.5",
-    "@emotion/styled": "^11.1.5",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   },
   "dependencies": {
-    "@fseehawer/react-circular-slider": "^2.3.5",
+    "@babel/runtime": "^7.16.5",
+    "@emotion/react": "^11.1.5",
+    "@emotion/styled": "^11.1.5",
+    "@fseehawer/react-circular-slider": "^2.3.9",
     "react-mobile-picker": "^0.1.12",
     "react-modal": "^3.14.4"
   }

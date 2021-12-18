@@ -5,9 +5,20 @@ List of React Component mimicating HomeKit components from the Home application 
 
 ## Installation
 
+Install the package
+
 ```
-npm install homekit-react-components
+npm install --save homekit-react-components
 ```
+
+Install peer-dependencies if you don't already have them.
+
+```
+npm install --save react react-dom
+```
+
+
+
 
 
 ## Usage
@@ -15,12 +26,11 @@ npm install homekit-react-components
 1. Wrap your app with the theme provider. For now, no default theme are provided so you will need to inject the theme yourself.
 
 ```js
-import { ThemeProvider } from '@emotion/react';
-import { theme } from 'homekit-react-components';
+import { ThemeProvider } from 'homekit-react-components';
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider>
       <MyApp />
     </ThemeProvider>
   );
@@ -48,8 +58,6 @@ https://william57m.github.io/homekit-react-components/
 ## Roadmap
 
 Here is a non exhaustive list of the next components to be developed:
-- Sensor Card
-- Switch Card
 - Fan Card
 - Media Player Card
 - State component
@@ -57,6 +65,7 @@ Here is a non exhaustive list of the next components to be developed:
 - Title, section component and different HomeKit layout
 - Support for light/dark mode
 
+Look at the [wiki](https://github.com/william57m/homekit-react-components/wiki/Improvements) for coming improvements.
 
 ## Contribution
 

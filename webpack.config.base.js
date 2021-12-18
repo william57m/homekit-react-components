@@ -12,7 +12,7 @@ module.exports = {
       },
       {    
         test: /\.(woff|woff2|eot|ttf|otf)$/,
-        use: ['file-loader'],
+        use: 'url-loader',
       },
       {
         test: /\.(gif|png|jpe?g)$/i,

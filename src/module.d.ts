@@ -1,10 +1,10 @@
 
 declare module '@emotion/react' {
   import '@emotion/react';
+  import React from 'react';
   interface Colors {
     [key: string]: string;
   }
-
   export interface Theme {
     colors: Colors,
     card: any,
@@ -14,6 +14,11 @@ declare module '@emotion/react' {
     modal: any,
     layout: any,
   }
+
+  interface ThemeProviderProps {
+    theme: Theme;
+  }
+  const ThemeProvider: React.SFC<ThemeProviderProps>;
 }
 
 
