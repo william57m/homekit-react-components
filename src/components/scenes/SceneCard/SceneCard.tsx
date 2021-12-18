@@ -22,8 +22,12 @@ const SceneCardIcon = styled(CardIcon)`
 `;
 
 const SceneCardName = styled(CardName)`
-  padding: 10px;
+  padding: 0px 10px;
   flex-grow: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
 `;
 
 interface SceneCardProps {
